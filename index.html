@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Federico Stefan — UX/UI Designer</title>
+  <link rel="stylesheet" href="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/tokens/grid.css">
+  <link rel="stylesheet" href="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/tokens/motion.css">
+  <link rel="stylesheet" href="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/tokens/base.css">
+  <link rel="stylesheet" href="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/styles.css">
+  <script src="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    body{margin:0;background:var(--bg-page);color:var(--text-primary);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--accent)}
+    ::selection{background:var(--accent-subtle)}
+  </style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg-page);color:var(--text-primary);font-family:var(--font-sans);transition:background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);--bg-page:{{ tv.bgPage }};--bg-surface:{{ tv.bgSurface }};--bg-raised:{{ tv.bgRaised }};--bg-inverse:{{ tv.bgInverse }};--text-primary:{{ tv.textPrimary }};--text-secondary:{{ tv.textSecondary }};--text-muted:{{ tv.textMuted }};--text-inverse:{{ tv.textInverse }};--text-accent:{{ tv.accent }};--border-default:{{ tv.borderDefault }};--border-strong:{{ tv.borderStrong }};--accent:{{ tv.accent }};--accent-hover:{{ tv.accentHover }};--accent-subtle:{{ tv.accentSubtle }};--image-placeholder:{{ tv.bgSurface }};--focus-ring:{{ tv.accent }}">
+  <header style="position:sticky;top:0;z-index:10;background:color-mix(in srgb, var(--bg-page) 85%, transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-5);height:var(--header-height);padding:0 var(--grid-margin);max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;box-sizing:border-box">
+      <div style="display:flex;align-items:baseline;gap:var(--space-9);min-width:0">
+        <a href="#" onClick="{{ goHome }}" style="font-size:15px;font-weight:500;letter-spacing:-0.02em;color:var(--text-primary);white-space:nowrap">Federico Stefan</a>
+        <span style="font-size:13px;color:var(--text-secondary);white-space:nowrap">UX/UI Designer</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--space-6)">
+        <nav style="display:flex;gap:var(--space-6)">
+          <sc-for list="{{ headerNav }}" as="l" hint-placeholder-count="4">
+            <a href="#" onClick="{{ l.go }}" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:{{ l.color }}">
+              <span style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:{{ l.dot }}"></span>{{ l.label }}
+            </a>
+          </sc-for>
+        </nav>
+        <span style="width:1px;height:14px;background:var(--border-default)"></span>
+        <div role="group" aria-label="Colour mode" style="display:flex;align-items:center;gap:var(--space-2);font-size:13px">
+          <button type="button" onClick="{{ setLight }}" aria-pressed="{{ isLight }}" style="all:unset;cursor:pointer;color:{{ lightColor }};transition:color var(--dur-base) var(--ease-out)">Light</button>
+          <span style="color:var(--text-muted)">/</span>
+          <button type="button" onClick="{{ setDark }}" aria-pressed="{{ isDark }}" style="all:unset;cursor:pointer;color:{{ darkColor }};transition:color var(--dur-base) var(--ease-out)">Dark</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex:1">
+
+    <!-- HOME -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;box-sizing:border-box;padding:var(--space-10) var(--grid-margin) var(--space-9)">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:var(--space-8) var(--grid-gutter)">
+          <div data-reveal="" style="flex:1 1 560px;display:flex;flex-direction:column;gap:var(--space-6)">
+            <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Federico Stefan · UX/UI Designer based in Berlin</span>
+            <h1 style="margin:0;max-width:22ch;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500;text-wrap:balance">I turn complex products into interfaces that feel simple from the first click.</h1>
+          </div>
+          <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(2,64px)">
+            <div data-anim="morph" style="border-radius:50%;background:#6A4BC4"></div>
+            <div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div>
+            <div style="border-radius:100% 0 0 0;background:#3C4A6B;transform:{{ shQ }};transition:transform var(--dur-slow) var(--ease-out)"></div>
+            <div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:44px;height:44px;box-sizing:border-box;border:10px solid #6A4BC4;border-radius:50%"></div></div>
+            <div style="position:relative;overflow:hidden;transform:{{ shH }};transition:transform var(--dur-slow) var(--ease-out)"><div style="position:absolute;left:0;top:32px;width:64px;height:64px;border-radius:50%;background:#6B7A70"></div></div>
+            <div style="border-radius:50%;background:#3C4A6B;transform:{{ shC }};transition:transform var(--dur-slow) var(--ease-out)"></div>
+          </div></sc-if>
+        </div>
+      </section>
+
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;box-sizing:border-box;padding:0 var(--grid-margin)">
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--space-3) var(--grid-gutter);padding:var(--space-4) 0 var(--space-8);border-top:1px solid var(--border-strong)">
+          <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">My Projects</span>
+          <p style="margin:0;max-width:44ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">Two case studies covering the full design process, from research and wireframes through to a shipped product.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-13)">
+          <sc-for list="{{ rows }}" as="p" hint-placeholder-count="2">
+            <a href="#" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" data-reveal="" style="display:flex;flex-direction:column;gap:var(--space-6);color:var(--text-primary);text-decoration:none;cursor:pointer">
+              <div style="position:relative;width:100%;aspect-ratio:16 / 9;background:{{ p.panel }};overflow:hidden">
+                <div style="position:absolute;left:6%;top:{{ p.mTop }};width:{{ p.mW }};height:{{ p.mHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden">
+                  <div style="flex:none;height:22px;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid rgba(255,255,255,0.08)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span></div>
+                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.mAR }};overflow:hidden"><image-slot id="{{ p.slug }}-mockMain" src="{{ p.mockMain }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%;transform:{{ p.zoom }};transition:transform var(--dur-slow) var(--ease-out)"></image-slot></div>
+                </div>
+                <div style="position:absolute;right:5%;top:{{ p.sTop }};bottom:{{ p.sBottom }};width:{{ p.sW }};height:{{ p.sHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden">
+                  <div style="flex:none;height:22px;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid rgba(255,255,255,0.08)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span></div>
+                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.sAR }};overflow:hidden"><image-slot id="{{ p.slug }}-mockSecond" src="{{ p.mockSecond }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%;transform:{{ p.zoom }};transition:transform var(--dur-slow) var(--ease-out)"></image-slot></div>
+                </div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-3) var(--grid-gutter)">
+                <span style="flex:0 0 64px;font-family:var(--font-mono);font-size:var(--type-small);color:{{ p.metaColor }};transition:color var(--dur-base) var(--ease-out)">{{ p.num }}</span>
+                <span style="flex:1 1 300px;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500;transform:{{ p.shift }};transition:transform var(--dur-base) var(--ease-out)">{{ p.title }}</span>
+                <span style="flex:0 1 380px;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.short }}</span>
+                <span style="flex:0 0 auto;display:flex;gap:var(--space-2);font-size:var(--type-small);color:{{ p.metaColor }};transition:color var(--dur-base) var(--ease-out)">
+                  <span>View Details</span>
+                  <span style="opacity:{{ p.arrowOp }};transform:{{ p.shift }};transition:all var(--dur-base) var(--ease-out)">→</span>
+                </span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;box-sizing:border-box;padding:var(--section-gap) var(--grid-margin)">
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:var(--space-6) var(--grid-gutter);padding-top:var(--space-6);border-top:1px solid var(--border-default)">
+          <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:var(--space-5);padding-top:var(--space-2)">
+            <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">About me</span>
+            <div style="width:160px;aspect-ratio:3 / 4;position:relative;overflow:hidden;background:var(--image-placeholder)">
+              <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="home-portrait" src="assets/photos/portrait.jpg" shape="rect" fit="cover" placeholder="Portrait"></image-slot>
+            </div>
+          </div>
+          <div style="flex:3 1 520px;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-6)">
+            <p style="margin:0;max-width:34em;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">UX/UI designer who believes good design should be simple and effortless. Currently working at Turm &amp; Leufer in Berlin, where I've built design systems and product interfaces from the ground up that focus on making complex tools feel simple and intuitive from the first click.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-6);align-items:center">
+              <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="→" onClick="{{ goAbout }}" hint-size="120px,24px">Learn More</x-import>
+              <a href="assets/Federico-Stefan-CV.pdf" onClick="{{ downloadCv }}" style="font-size:var(--type-small);color:var(--text-primary);text-decoration:underline;text-underline-offset:4px" style-hover="color:var(--accent)">Download CV ↓</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- PROJECTS -->
+    <sc-if value="{{ isProjects }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-11) var(--grid-margin) var(--section-gap);box-sizing:border-box">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:var(--space-6) var(--grid-gutter);padding-bottom:var(--space-11)">
+          <h1 data-reveal="" style="margin:0;font-size:var(--type-display-xl);line-height:var(--lh-display-xl);letter-spacing:var(--tracking-display);font-weight:500">Projects</h1>
+          <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="display:flex;gap:var(--space-3)"><div data-anim="spin" style="width:56px;height:56px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div><div data-anim="morph" style="width:56px;height:56px;border-radius:50%;background:#6A4BC4"></div></div></sc-if>
+          <p data-reveal="" style="margin:0;max-width:24ch;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);text-wrap:pretty">Good design shouldn't need an explanation. Every project here starts with that idea.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));align-items:start;gap:var(--space-11) var(--grid-gutter)">
+          <sc-for list="{{ rows }}" as="p" hint-placeholder-count="2">
+            <div data-reveal="" style="min-width:0;display:flex;flex-direction:column;gap:var(--space-5);margin-top:{{ p.stagger }}">
+              <div style="position:relative">
+                <div style="position:relative;width:100%;aspect-ratio:16 / 9;background:{{ p.panel }};overflow:hidden">
+                <div style="position:absolute;left:6%;top:{{ p.mTop }};width:{{ p.mW }};height:{{ p.mHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden">
+                  <div style="flex:none;height:22px;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid rgba(255,255,255,0.08)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span></div>
+                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.mAR }};overflow:hidden"><image-slot id="{{ p.slug }}-proj-mockMain" src="{{ p.mockMain }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%;transform:{{ p.zoom }};transition:transform var(--dur-slow) var(--ease-out)"></image-slot></div>
+                </div>
+                <div style="position:absolute;right:5%;top:{{ p.sTop }};bottom:{{ p.sBottom }};width:{{ p.sW }};height:{{ p.sHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden">
+                  <div style="flex:none;height:22px;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid rgba(255,255,255,0.08)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span></div>
+                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.sAR }};overflow:hidden"><image-slot id="{{ p.slug }}-proj-mockSecond" src="{{ p.mockSecond }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%;transform:{{ p.zoom }};transition:transform var(--dur-slow) var(--ease-out)"></image-slot></div>
+                </div>
+              </div>
+                <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="position:absolute;top:-28px;right:-28px;width:56px;height:56px;border-radius:{{ p.shapeRadius }};background:{{ p.accent }};pointer-events:none;transform:{{ p.markRot }};transition:transform var(--dur-slow) var(--ease-out)"></div></sc-if>
+              </div>
+              <a href="#" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="display:flex;flex-direction:column;gap:var(--space-3);color:var(--text-primary)">
+                <div style="display:flex;align-items:baseline;gap:var(--space-5)">
+                  <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ p.metaColor }}">{{ p.num }}</span>
+                  <span style="font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500;transform:{{ p.shift }};transition:transform var(--dur-base) var(--ease-out)">{{ p.title }}</span>
+                </div>
+                <p style="margin:0;max-width:44ch;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">{{ p.short }}</p>
+                <span style="display:flex;gap:var(--space-2);font-size:var(--type-small);color:{{ p.metaColor }}"><span>View Details</span><span style="opacity:{{ p.arrowOp }}">→</span></span>
+              </a>
+            </div>
+          </sc-for>
+        </div>
+        
+      </section>
+    </sc-if>
+
+    <!-- CASE STUDY — HORIZONTAL -->
+    <sc-if value="{{ isCaseH }}" hint-placeholder-val="{{ false }}">
+      <div ref="{{ setOuter }}" style="position:relative">
+        <div ref="{{ setSticky }}" style="position:sticky;top:var(--header-height);height:calc(100vh - var(--header-height));overflow:hidden">
+          <div ref="{{ setTrack }}" style="display:flex;align-items:stretch;gap:var(--space-11);height:100%;width:max-content;padding:min(48px,5vh) var(--grid-margin) min(64px,7vh);box-sizing:border-box;will-change:transform;--type-display-xl:clamp(56px,14vh,144px);--type-display:clamp(40px,9vh,96px);--type-h1:clamp(30px,6vh,64px);--type-h2:clamp(22px,4vh,44px);--type-h3:clamp(17px,3vh,30px);--type-body-lg:clamp(15px,2.2vh,22px);--type-body:clamp(14px,2vh,17px);--type-small:clamp(12px,1.8vh,13px)">
+
+            <div style="flex:none;width:min(52vw,760px);height:100%;display:flex;flex-direction:column;justify-content:space-between">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="←" size="small" muted="{{ true }}" onClick="{{ goProjects }}" hint-size="90px,20px">Projects</x-import>
+                <span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-secondary)">{{ p.counter }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:var(--space-8)">
+                <h1 style="margin:0;font-size:var(--type-display-xl);line-height:var(--lh-display-xl);letter-spacing:var(--tracking-display);font-weight:500">{{ p.title }}</h1>
+                <div style="display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-9);padding-top:var(--space-4);border-top:1px solid var(--border-strong);font-size:var(--type-small);color:var(--text-secondary)">
+                  <span style="display:flex;align-items:center;gap:var(--space-2)"><span style="width:6px;height:6px;border-radius:50%;background:{{ p.accent }}"></span>{{ p.role }}</span>
+                  <span>{{ p.author }}</span>
+                  <span>{{ p.year }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="flex:none;height:100%;aspect-ratio:16 / 10;position:relative;background:var(--image-placeholder)">
+              <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-hero" src="{{ p.heroSrc }}" shape="rect" placeholder="{{ p.heroLabel }}"></image-slot>
+            </div>
+
+            <div style="flex:none;width:min(62vw,780px);height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:var(--space-6)">
+              <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Project Overview</span>
+              <p style="margin:0;font-size:clamp(15px,min(1.7vw,2.9vh),26px);line-height:1.4;letter-spacing:var(--tracking-heading);text-wrap:pretty">{{ p.overview }}</p>
+            </div>
+
+            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="flex:none;height:100%;aspect-ratio:1 / 2;display:grid;grid-template-rows:1fr 1fr">
+              <div data-anim="morph" style="border-radius:50%;background:{{ p.accent }}"></div>
+              <div style="position:relative;overflow:hidden"><div data-anim="breathe" style="position:absolute;left:0;top:50%;width:100%;aspect-ratio:1;border-radius:50%;background:#C3B1E8"></div></div>
+            </div></sc-if>
+            <div style="flex:none;width:min(64vw,880px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:min(24px,2.5vh)">
+              <h2 style="margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Objectives</h2>
+              <ol style="margin:0;padding:0;list-style:none;border-bottom:1px solid var(--border-default)">
+                <sc-for list="{{ p.objectivesN }}" as="o" hint-placeholder-count="5">
+                  <li style="display:flex;gap:var(--space-5);padding:min(16px,1.3vh) 0;border-top:1px solid var(--border-default)">
+                    <span style="flex:0 0 32px;font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted);padding-top:3px">{{ o.n }}</span>
+                    <span style="flex:1;font-size:var(--type-body);line-height:1.45;text-wrap:pretty">{{ o.t }}</span>
+                  </li>
+                </sc-for>
+              </ol>
+            </div>
+
+            <figure style="flex:none;margin:0;height:100%;display:flex;flex-direction:{{ p.fig1.fdir }};justify-content:space-between;align-items:flex-end;gap:var(--space-6)">
+              <div style="flex:none;align-self:flex-start;height:{{ p.fig1.h }};aspect-ratio:{{ p.fig1.ratio }};position:relative;background:var(--image-placeholder)">
+                <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig1" src="{{ p.fig1.src }}" shape="rect" placeholder="{{ p.fig1.label }}"></image-slot>
+              </div>
+              <figcaption style="display:flex;flex-direction:{{ p.fig1.capDir }};gap:var(--space-2) var(--space-6);align-items:baseline;width:{{ p.fig1.capW }};min-width:{{ p.fig1.capMin }}">
+                <span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ p.fig1.n }}</span>
+                <span style="flex:0 0 auto;font-size:var(--type-body-lg);font-weight:500">{{ p.fig1.t }}</span>
+                <span style="max-width:52ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.fig1.d }}</span>
+              </figcaption>
+            </figure>
+
+            <figure style="flex:none;margin:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;gap:var(--space-5)">
+              <figcaption style="display:flex;flex-direction:column;gap:var(--space-2);max-width:44ch">
+                <span style="display:flex;gap:var(--space-4);align-items:baseline"><span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ p.fig2.n }}</span><span style="font-size:var(--type-body-lg);font-weight:500">{{ p.fig2.t }}</span></span>
+                <span style="font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.fig2.d }}</span>
+              </figcaption>
+              <div style="height:68%;display:flex;gap:var(--space-5)">
+                <div style="flex:none;height:100%;aspect-ratio:{{ p.fig2.ratio }};position:relative;background:var(--image-placeholder)">
+                  <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig2" src="{{ p.fig2.src }}" shape="rect" placeholder="{{ p.fig2.label }}"></image-slot>
+                </div>
+                <sc-if value="{{ p.fig2.has2 }}" hint-placeholder-val="{{ false }}"><div style="flex:none;height:100%;aspect-ratio:{{ p.fig2.ratio2 }};position:relative;background:var(--image-placeholder)">
+                  <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig2b" src="{{ p.fig2.src2 }}" shape="rect" placeholder="{{ p.fig2.label }}"></image-slot>
+                </div></sc-if>
+              </div>
+            </figure>
+
+            <figure style="flex:none;margin:0;height:100%;display:flex;align-items:flex-end;gap:var(--space-6)">
+              <div style="height:100%;aspect-ratio:{{ p.fig3.ratio }};position:relative;background:var(--image-placeholder)">
+                <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig3" src="{{ p.fig3.src }}" shape="rect" placeholder="{{ p.fig3.label }}"></image-slot>
+              </div>
+              <figcaption style="width:260px;display:flex;flex-direction:column;gap:var(--space-2)">
+                <span style="display:flex;gap:var(--space-4);align-items:baseline"><span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ p.fig3.n }}</span><span style="font-size:var(--type-body-lg);font-weight:500">{{ p.fig3.t }}</span></span>
+                <span style="font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.fig3.d }}</span>
+              </figcaption>
+            </figure>
+            <sc-for list="{{ p.extras }}" as="x" hint-placeholder-count="0">
+              <figure style="flex:none;margin:0;height:100%;display:flex;align-items:flex-end;gap:var(--space-6)">
+                <div style="height:100%;aspect-ratio:{{ x.ratio }};position:relative;background:var(--image-placeholder)">
+                  <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ x.id }}" src="{{ x.src }}" shape="rect" placeholder="{{ x.label }}"></image-slot>
+                </div>
+                <sc-if value="{{ x.has2 }}" hint-placeholder-val="{{ false }}"><div style="height:100%;aspect-ratio:{{ x.ratio2 }};position:relative;background:var(--image-placeholder)">
+                  <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ x.id }}b" src="{{ x.src2 }}" shape="rect" placeholder="{{ x.label }}"></image-slot>
+                </div></sc-if>
+                <sc-if value="{{ x.hasCap }}" hint-placeholder-val="{{ false }}">
+                  <figcaption style="width:260px;display:flex;flex-direction:column;gap:var(--space-2)">
+                    <span style="display:flex;gap:var(--space-4);align-items:baseline"><span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ x.n }}</span><span style="font-size:var(--type-body);font-weight:500">{{ x.t }}</span></span>
+                    <span style="font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ x.d }}</span>
+                  </figcaption>
+                </sc-if>
+              </figure>
+            </sc-for>
+
+            <div style="flex:none;display:flex;gap:var(--space-11);height:calc(100% + min(48px,5vh) + min(64px,7vh));margin:calc(-1 * min(48px,5vh)) 0 calc(-1 * min(64px,7vh));padding:min(48px,5vh) var(--space-10) min(64px,7vh);box-sizing:border-box;background:{{ changedBg }};color:{{ changedInk }}">
+              <div style="flex:none;width:min(60vw,760px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
+                <h2 style="margin:0;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500">What Changed</h2>
+                <p style="margin:0;font-size:var(--type-body);line-height:var(--lh-body);color:{{ changedMuted }};text-wrap:pretty">{{ p.changedIntro }}</p>
+              </div>
+              <sc-for list="{{ p.screensN }}" as="s" hint-placeholder-count="4">
+                <sc-if value="{{ s.notPair }}" hint-placeholder-val="{{ true }}">
+                <div style="flex:none;height:100%;display:flex;flex-direction:{{ s.dir }};align-items:flex-end;gap:var(--space-6)">
+                  <div style="flex:none;width:clamp(240px,34ch,340px);display:flex;flex-direction:column;gap:var(--space-3);padding-top:var(--space-4);border-top:1px solid {{ changedRule }}">
+                    <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">{{ s.n }}</span>
+                    <h3 style="margin:0;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
+                    <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.d }}</p>
+                  </div>
+                  <div style="flex:none;height:100%;aspect-ratio:{{ s.ratio }};position:relative;background:{{ changedSlot }}">
+                    <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}" src="{{ s.src }}" shape="rect" placeholder="{{ s.label }}"></image-slot>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ s.isPair }}" hint-placeholder-val="{{ false }}">
+                <div style="flex:none;height:100%;display:flex;align-items:flex-start;gap:var(--space-6)">
+                  <div style="flex:none;align-self:flex-end;width:clamp(240px,34ch,340px);display:flex;flex-direction:column;gap:var(--space-3);padding-top:var(--space-4);border-top:1px solid {{ changedRule }}">
+                    <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">{{ s.n }}</span>
+                    <h3 style="margin:0;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
+                    <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.d }}</p>
+                  </div>
+                  <div style="flex:none;display:flex;flex-direction:column;gap:var(--space-3)">
+                    <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">service.berlin.de</span>
+                    <div style="display:flex;gap:var(--space-3)">
+                      <sc-for list="{{ s.before }}" as="b" hint-placeholder-count="1">
+                        <div style="flex:none;height:calc(100vh - var(--header-height) - 260px);aspect-ratio:{{ b.ratio }};position:relative;background:{{ changedSlot }}">
+                          <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ b.id }}" src="{{ b.src }}" shape="rect" placeholder="service.berlin.de"></image-slot>
+                        </div>
+                      </sc-for>
+                    </div>
+                    <p style="width:0;min-width:100%;margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.cap }}</p>
+                  </div>
+                  <div style="flex:none;display:flex;flex-direction:column;gap:var(--space-3)">
+                    <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">Redesign</span>
+                    <div style="flex:none;height:calc(100vh - var(--header-height) - 260px);aspect-ratio:{{ s.afterRatio }};position:relative;background:{{ changedSlot }}">
+                      <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}-after" src="{{ s.afterSrc }}" shape="rect" placeholder="Redesign"></image-slot>
+                    </div>
+                  </div>
+                </div>
+                </sc-if>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="flex:none;height:100%;aspect-ratio:2 / 3;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr)">
+              <div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%)"></div><div></div>
+              <div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:60%;aspect-ratio:1;box-sizing:border-box;border:clamp(8px,2vh,18px) solid #6A4BC4;border-radius:50%"></div></div><div style="border-radius:0 100% 0 0;background:{{ p.accent }}"></div>
+              <div style="border-radius:50%;background:#6B7A70"></div><div style="border-radius:100% 0 0 0;background:#6A4BC4"></div>
+            </div></sc-if>
+            <div style="flex:none;width:min(90vw,1180px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
+              <div style="display:flex;gap:var(--space-9);align-items:flex-start">
+                <h2 style="flex:0 0 auto;margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Creative Process</h2>
+                <p style="margin:0;max-width:48ch;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">{{ p.processIntro }}</p>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--grid-gutter)">
+                <sc-for list="{{ p.processN }}" as="c" hint-placeholder-count="5">
+                  <div style="display:flex;flex-direction:column;gap:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--border-strong)">
+                    <span style="font-size:var(--type-h2);line-height:1;letter-spacing:var(--tracking-heading);color:var(--text-muted)">{{ c.n }}</span>
+                    <span style="font-size:var(--type-small);line-height:var(--lh-small);text-wrap:pretty">{{ c.t }}</span>
+                    <sc-if value="{{ c.hasImg }}" hint-placeholder-val="{{ false }}"><div style="position:relative;aspect-ratio:{{ c.imgRatio }};background:var(--image-placeholder)">
+                      <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ c.imgId }}" src="{{ c.img }}" shape="rect" placeholder="Process image"></image-slot>
+                    </div></sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="flex:none;width:min(96vw,1240px);height:100%;display:flex;gap:var(--space-9)">
+              <div style="flex:1.2;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
+                <span style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)"><span style="width:6px;height:6px;border-radius:50%;background:{{ p.accent }}"></span>Conclusion</span>
+                <p style="margin:0;font-size:clamp(15px,min(1.8vw,3vh),28px);line-height:1.3;letter-spacing:var(--tracking-heading);text-wrap:pretty">{{ p.conclusion1 }}</p>
+              </div>
+              <p style="flex:1;margin:0;align-self:flex-end;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">{{ p.conclusion2 }}</p>
+            </div>
+            <sc-if value="{{ p.hasClosing }}" hint-placeholder-val="{{ false }}"><div style="flex:none;height:100%;aspect-ratio:{{ p.closingRatio }};position:relative;background:var(--image-placeholder)">
+              <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-closing" src="{{ p.closingSrc }}" shape="rect" placeholder="Closing image"></image-slot>
+            </div></sc-if>
+
+            <div style="flex:none;width:calc(100vw - 2 * var(--grid-margin));height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:var(--space-4);box-sizing:border-box">
+              <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.NextProject" title="{{ p.nextTitle }}" number="{{ p.nextCounter }}" onClick="{{ p.openNext }}" hint-size="100%,140px"></x-import>
+            </div>
+          </div>
+          <div style="position:absolute;left:var(--grid-margin);right:var(--grid-margin);bottom:var(--space-5);height:1px;background:var(--border-default)">
+            <div ref="{{ setBar }}" style="height:1px;width:100%;background:var(--text-primary);transform:scaleX(0);transform-origin:left"></div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- CASE STUDY — VERTICAL -->
+    <sc-if value="{{ isCaseV }}" hint-placeholder-val="{{ false }}">
+      <article>
+        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-9) var(--grid-margin) var(--space-10);box-sizing:border-box">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-12)">
+            <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="←" size="small" muted="{{ true }}" onClick="{{ goProjects }}" hint-size="90px,20px">Projects</x-import>
+            <span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-secondary)">{{ p.counter }}</span>
+          </div>
+          <h1 data-reveal="" style="margin:0 0 var(--space-9);font-size:var(--type-display-xl);line-height:var(--lh-display-xl);letter-spacing:var(--tracking-display);font-weight:500">{{ p.title }}</h1>
+          <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-9);padding-top:var(--space-4);border-top:1px solid var(--border-strong);font-size:var(--type-small);color:var(--text-secondary)">
+            <span style="display:flex;align-items:center;gap:var(--space-2)"><span style="width:6px;height:6px;border-radius:50%;background:{{ p.accent }}"></span>{{ p.role }}</span>
+            <span>{{ p.author }}</span>
+            <span>{{ p.year }}</span>
+          </div>
+        </section>
+
+        <div data-reveal="" style="position:relative;width:100%;aspect-ratio:16 / 8;background:var(--image-placeholder)">
+          <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-hero" src="{{ p.heroSrc }}" shape="rect" placeholder="{{ p.heroLabel }}"></image-slot>
+        </div>
+
+        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-5) var(--grid-gutter)">
+            <span data-reveal="" style="flex:1 1 220px;font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary);padding-top:var(--space-2)">Project Overview</span>
+            <p data-reveal="" style="flex:3 1 560px;margin:0;max-width:34em;font-size:var(--type-h3);line-height:1.4;letter-spacing:var(--tracking-heading);text-wrap:pretty">{{ p.overview }}</p>
+          </div>
+        </section>
+
+        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
+          <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--space-8) var(--grid-gutter)">
+            <h2 data-reveal="" style="flex:1 1 300px;position:sticky;top:calc(var(--header-height) + var(--space-6));margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Objectives</h2>
+            <ol style="flex:2 1 560px;margin:0;padding:0;list-style:none;border-bottom:1px solid var(--border-default)">
+              <sc-for list="{{ p.objectivesN }}" as="o" hint-placeholder-count="5">
+                <li data-reveal="" style="display:flex;gap:var(--grid-gutter);padding:var(--space-5) 0 var(--space-6);border-top:1px solid var(--border-default)">
+                  <span style="flex:0 0 40px;font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted);padding-top:5px">{{ o.n }}</span>
+                  <span style="flex:1;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);text-wrap:pretty">{{ o.t }}</span>
+                </li>
+              </sc-for>
+            </ol>
+          </div>
+        </section>
+
+        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:var(--space-13)">
+          <figure data-reveal="" style="margin:0;display:flex;flex-direction:column;gap:var(--space-5)">
+            <div style="position:relative;width:100%;max-width:{{ p.fig1.vmax }};aspect-ratio:{{ p.fig1.ratio }};background:var(--image-placeholder)">
+              <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig1" src="{{ p.fig1.src }}" shape="rect" placeholder="{{ p.fig1.label }}"></image-slot>
+            </div>
+            <figcaption style="display:flex;flex-wrap:wrap;gap:var(--space-3) var(--grid-gutter)">
+              <span style="flex:1 1 300px;display:flex;gap:var(--space-4);align-items:baseline"><span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ p.fig1.n }}</span><span style="font-size:var(--type-h3);letter-spacing:var(--tracking-heading);font-weight:500">{{ p.fig1.t }}</span></span>
+              <span style="flex:1 1 360px;max-width:52ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.fig1.d }}</span>
+            </figcaption>
+          </figure>
+          <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--space-11) var(--grid-gutter)">
+            <figure data-reveal="" style="flex:7 1 440px;margin:0;display:flex;flex-direction:column;gap:var(--space-5)">
+              <div style="position:relative;aspect-ratio:{{ p.fig2.ratio }};background:var(--image-placeholder)">
+                <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig2" src="{{ p.fig2.src }}" shape="rect" placeholder="{{ p.fig2.label }}"></image-slot>
+              </div>
+              <sc-if value="{{ p.fig2.has2 }}" hint-placeholder-val="{{ false }}"><div style="position:relative;aspect-ratio:{{ p.fig2.ratio2 }};background:var(--image-placeholder)">
+                <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig2b-v" src="{{ p.fig2.src2 }}" shape="rect" placeholder="{{ p.fig2.label }}"></image-slot>
+              </div></sc-if>
+              <figcaption style="display:flex;flex-direction:column;gap:var(--space-2);max-width:48ch">
+                <span style="display:flex;gap:var(--space-4);align-items:baseline"><span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ p.fig2.n }}</span><span style="font-size:var(--type-body-lg);font-weight:500">{{ p.fig2.t }}</span></span>
+                <span style="font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.fig2.d }}</span>
+              </figcaption>
+            </figure>
+            <figure data-reveal="" style="flex:5 1 320px;margin:var(--space-13) 0 0;display:flex;flex-direction:column;gap:var(--space-5)">
+              <div style="position:relative;aspect-ratio:{{ p.fig3.ratio }};background:var(--image-placeholder)">
+                <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig3" src="{{ p.fig3.src }}" shape="rect" placeholder="{{ p.fig3.label }}"></image-slot>
+              </div>
+              <figcaption style="display:flex;flex-direction:column;gap:var(--space-2);max-width:48ch">
+                <span style="display:flex;gap:var(--space-4);align-items:baseline"><span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ p.fig3.n }}</span><span style="font-size:var(--type-body-lg);font-weight:500">{{ p.fig3.t }}</span></span>
+                <span style="font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.fig3.d }}</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--grid-gutter)">
+            <sc-for list="{{ p.extras }}" as="x" hint-placeholder-count="0">
+              <figure data-reveal="" style="flex:1 1 280px;margin:0;display:flex;flex-direction:column;gap:var(--space-5)">
+                <div style="position:relative;aspect-ratio:{{ x.ratio }};background:var(--image-placeholder)">
+                  <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ x.id }}-v" src="{{ x.src }}" shape="rect" placeholder="{{ x.label }}"></image-slot>
+                </div>
+                <sc-if value="{{ x.has2 }}" hint-placeholder-val="{{ false }}"><div style="position:relative;aspect-ratio:{{ x.ratio2 }};background:var(--image-placeholder)">
+                  <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ x.id }}b-v" src="{{ x.src2 }}" shape="rect" placeholder="{{ x.label }}"></image-slot>
+                </div></sc-if>
+                <sc-if value="{{ x.hasCap }}" hint-placeholder-val="{{ false }}">
+                  <figcaption style="display:flex;flex-direction:column;gap:var(--space-2);max-width:48ch">
+                    <span style="display:flex;gap:var(--space-4);align-items:baseline"><span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ x.n }}</span><span style="font-size:var(--type-body);font-weight:500">{{ x.t }}</span></span>
+                    <span style="font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ x.d }}</span>
+                  </figcaption>
+                </sc-if>
+              </figure>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="margin-top:var(--section-gap);background:{{ changedBg }};color:{{ changedInk }}">
+          <div style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin);box-sizing:border-box">
+            <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-8) var(--grid-gutter);margin-bottom:var(--space-13)">
+              <h2 data-reveal="" style="margin:0;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500">What Changed</h2>
+              <p data-reveal="" style="margin:0;max-width:52ch;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);color:{{ changedMuted }};text-wrap:pretty">{{ p.changedIntro }}</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-12)">
+              <sc-for list="{{ p.screensN }}" as="s" hint-placeholder-count="4">
+                <sc-if value="{{ s.notPair }}" hint-placeholder-val="{{ true }}">
+                <div data-reveal="" style="display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};align-items:flex-end;gap:var(--space-6) var(--space-11)">
+                  <div style="flex:3 1 480px;position:relative;aspect-ratio:{{ s.ratio }};background:{{ changedSlot }}">
+                    <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}" src="{{ s.src }}" shape="rect" placeholder="{{ s.label }}"></image-slot>
+                  </div>
+                  <div style="flex:2 1 300px;display:flex;flex-direction:column;gap:var(--space-4);padding-top:var(--space-4);border-top:1px solid {{ changedRule }}">
+                    <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">{{ s.n }}</span>
+                    <h3 style="margin:0;font-size:var(--type-h2);line-height:var(--lh-h2);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
+                    <p style="margin:0;max-width:46ch;font-size:var(--type-body);line-height:var(--lh-body);color:{{ changedMuted }};text-wrap:pretty">{{ s.d }}</p>
+                  </div>
+                </div>
+                </sc-if>
+                <sc-if value="{{ s.isPair }}" hint-placeholder-val="{{ false }}">
+                <div data-reveal="" style="display:flex;flex-direction:column;gap:var(--space-8)">
+                  <div style="display:flex;flex-direction:column;gap:var(--space-4);max-width:62ch;padding-top:var(--space-4);border-top:1px solid {{ changedRule }}">
+                    <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">{{ s.n }}</span>
+                    <h3 style="margin:0;font-size:var(--type-h2);line-height:var(--lh-h2);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
+                    <p style="margin:0;font-size:var(--type-body);line-height:var(--lh-body);color:{{ changedMuted }};text-wrap:pretty">{{ s.d }}</p>
+                  </div>
+                  <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--space-8) var(--grid-gutter)">
+                    <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:var(--space-3)">
+                      <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">service.berlin.de</span>
+                      <sc-for list="{{ s.before }}" as="b" hint-placeholder-count="1">
+                        <div style="position:relative;aspect-ratio:{{ b.ratio }};background:{{ changedSlot }}">
+                          <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ b.id }}-v" src="{{ b.src }}" shape="rect" placeholder="service.berlin.de"></image-slot>
+                        </div>
+                      </sc-for>
+                      <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.cap }}</p>
+                    </div>
+                    <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:var(--space-3)">
+                      <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">Redesign</span>
+                      <div style="position:relative;aspect-ratio:{{ s.afterRatio }};background:{{ changedSlot }}">
+                        <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}-after-v" src="{{ s.afterSrc }}" shape="rect" placeholder="Redesign"></image-slot>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </sc-if>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+
+        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-6) var(--grid-gutter);margin-bottom:var(--space-11)">
+            <h2 data-reveal="" style="flex:1 1 300px;margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Creative Process</h2>
+            <p data-reveal="" style="flex:2 1 520px;margin:0;max-width:40em;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);text-wrap:pretty">{{ p.processIntro }}</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-9) var(--grid-gutter)">
+            <sc-for list="{{ p.processN }}" as="c" hint-placeholder-count="5">
+              <div data-reveal="" style="display:flex;flex-direction:column;gap:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--border-strong)">
+                <span style="font-size:var(--type-h2);line-height:1;letter-spacing:var(--tracking-heading);color:var(--text-muted);font-weight:400">{{ c.n }}</span>
+                <span style="font-size:var(--type-body);line-height:var(--lh-body);text-wrap:pretty">{{ c.t }}</span>
+                    <sc-if value="{{ c.hasImg }}" hint-placeholder-val="{{ false }}"><div style="position:relative;aspect-ratio:{{ c.imgRatio }};background:var(--image-placeholder)">
+                      <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ c.imgId }}-v" src="{{ c.img }}" shape="rect" placeholder="Process image"></image-slot>
+                    </div></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin);box-sizing:border-box">
+          <span data-reveal="" style="display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-8);font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)"><span style="width:6px;height:6px;border-radius:50%;background:{{ p.accent }}"></span>Conclusion</span>
+          <p data-reveal="" style="margin:0 0 var(--space-10);max-width:30em;font-size:var(--type-h2);line-height:1.2;letter-spacing:var(--tracking-heading);text-wrap:pretty">{{ p.conclusion1 }}</p>
+          <div style="display:flex;justify-content:flex-end">
+            <p data-reveal="" style="margin:0;max-width:44ch;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);color:var(--text-secondary);text-wrap:pretty">{{ p.conclusion2 }}</p>
+          </div>
+          <sc-if value="{{ p.hasClosing }}" hint-placeholder-val="{{ false }}"><div data-reveal="" style="position:relative;max-width:960px;margin:var(--section-gap) auto 0;aspect-ratio:{{ p.closingRatio }};background:var(--image-placeholder)">
+            <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-closing-v" src="{{ p.closingSrc }}" shape="rect" placeholder="Closing image"></image-slot>
+          </div></sc-if>
+          <div style="margin-top:var(--section-gap)">
+            <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.NextProject" title="{{ p.nextTitle }}" number="{{ p.nextCounter }}" onClick="{{ p.openNext }}" hint-size="100%,220px"></x-import>
+          </div>
+        </section>
+      </article>
+    </sc-if>
+
+    <!-- ABOUT -->
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-11) var(--grid-margin) 0;box-sizing:border-box">
+        <span data-reveal="" style="display:block;margin-bottom:var(--space-6);font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">About</span>
+        <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="float:right;display:grid;grid-template-columns:repeat(3,80px);grid-template-rows:repeat(3,80px);margin:0 0 var(--space-6) var(--space-8)"><div data-anim="morph" style="border-radius:50%;background:#6A4BC4"></div><div></div><div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div><div style="position:relative;overflow:hidden"><div style="position:absolute;left:0;top:50%;width:100%;aspect-ratio:1;border-radius:50%;background:#3C4A6B"></div></div><div style="border-radius:100% 0 0 0;background:#C3B1E8"></div><div></div><div></div><div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:62%;aspect-ratio:1;box-sizing:border-box;border:max(6px,14%) solid #6A4BC4;border-radius:50%"></div></div><div data-anim="breathe" style="border-radius:999px 999px 0 0;background:#6B7A70;transform-origin:bottom"></div></div></sc-if>
+        <h1 data-reveal="" style="margin:0;max-width:18ch;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500;text-wrap:balance">I design digital experiences that strengthen your brand identity, simplify how users interact with your product and deliver results that matter.</h1>
+      </section>
+
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-8) var(--grid-gutter);align-items:flex-start">
+          <div data-reveal="" style="flex:1 1 280px;max-width:420px;position:relative;aspect-ratio:4 / 5;background:var(--image-placeholder)">
+            <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="about-portrait" src="assets/photos/portrait.jpg" shape="rect" placeholder="Portrait"></image-slot>
+            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-anim="spin" style="position:absolute;right:-36px;bottom:-36px;width:72px;height:72px;background:#6A4BC4;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);pointer-events:none"></div><div aria-hidden="true" style="position:absolute;left:-28px;top:-28px;width:56px;height:56px;border-radius:50%;background:#C3B1E8;pointer-events:none" data-anim="breathe"></div></sc-if>
+          </div>
+          <div data-reveal="" style="flex:2 1 460px;display:flex;flex-direction:column;gap:var(--space-5);padding-top:var(--space-13)">
+            <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">About me</span>
+            <p style="margin:0;max-width:32em;font-size:var(--type-h3);line-height:1.4;letter-spacing:var(--tracking-heading);text-wrap:pretty">As a UX/UI designer, I work to find the clarity that meets purpose by creating interfaces that feel intuitive from the first interaction. My work starts with understanding the problem and ends with a design that's ready to build impact.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-5);align-items:center;padding-top:var(--space-4)">
+              <a href="assets/Federico-Stefan-CV.pdf" download="Federico-Stefan-CV.pdf" onClick="{{ downloadCv }}" style="display:inline-flex;align-items:center;gap:var(--space-2);height:44px;padding:0 var(--space-5);background:var(--text-primary);color:var(--bg-page);text-decoration:none;font-size:var(--type-small);font-weight:500;transition:background var(--duration-base) var(--ease-out)" style-hover="background:var(--accent)">Download CV <span>↓</span></a>
+              <a href="assets/Federico-Stefan-CV.pdf" target="_blank" rel="noopener" onClick="{{ openCv }}" style="font-size:var(--type-small);color:var(--text-primary);text-decoration:underline;text-underline-offset:4px" style-hover="color:var(--accent)">Open in browser ↗</a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:var(--space-5) var(--grid-gutter);margin-bottom:var(--space-11)">
+          <h2 style="margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">My Process</h2>
+          <p style="margin:0;max-width:44ch;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">While working on every project I take on, it follows a clear process. From understanding the brief to validating the final design. Here's how I work.</p>
+        </div>
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--space-5) var(--grid-gutter);margin-bottom:var(--space-13)">
+          <div style="flex:2 1 420px;position:relative;aspect-ratio:4 / 5;max-width:560px;overflow:hidden;background:var(--image-placeholder)">
+            <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="about-process-photo" src="assets/photos/workshop-board.jpg" shape="rect" fit="cover" placeholder="Process photo"></image-slot>
+          </div>
+          <div style="flex:1 1 240px;max-width:360px;position:relative;aspect-ratio:2 / 3;overflow:hidden;background:var(--image-placeholder)">
+            <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="about-process-photo-2" src="assets/photos/workshop-thumbs.jpg" shape="rect" fit="cover" placeholder="Process photo"></image-slot>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-11) var(--grid-gutter)">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+            <div data-reveal="" style="display:flex;flex-direction:column;gap:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--border-strong)">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-5)">
+                <span style="font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);color:var(--text-muted);font-weight:400">{{ s.n }}</span>
+                <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-anim="{{ s.anim }}" style="width:40px;height:40px;flex:none;box-sizing:border-box;border-radius:{{ s.radius }};background:{{ s.color }};border:{{ s.border }};clip-path:{{ s.clip }}"></div></sc-if>
+              </div>
+              <span style="max-width:30ch;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);text-wrap:pretty">{{ s.t }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin);box-sizing:border-box">
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:var(--space-5) var(--grid-gutter);margin-bottom:var(--space-9)">
+          <div style="display:flex;align-items:center;gap:var(--space-5)"><h2 style="margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Experience</h2><sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;gap:6px"><div data-anim="morph" style="width:36px;height:36px;border-radius:50%;background:#6A4BC4"></div><div style="width:36px;height:36px;border-radius:0 100% 0 0;background:#3C4A6B"></div><div data-anim="spin" style="width:36px;height:36px;background:#C3B1E8;clip-path:polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%)"></div></div></sc-if></div>
+          <p style="margin:0;max-width:44ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">Currently working at Turm &amp; Leufer in Berlin, with experience across brand identity, product design, and Webflow implementation.</p>
+        </div>
+        <span style="display:block;padding-bottom:var(--space-3);font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Experience</span>
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:var(--space-4) var(--grid-gutter);padding:var(--space-6) 0 var(--space-8);border-top:1px solid var(--border-strong)">
+          <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:var(--space-1)">
+            <span style="font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);font-weight:500">Turm &amp; Leufer</span>
+            <span style="font-size:var(--type-small);color:var(--text-secondary)">UX/UI Designer</span>
+          </div>
+          <p style="flex:2 1 420px;margin:0;max-width:56ch;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">Designed brand identity, design system, and product UI for Nordstern, a live AI SaaS platform — including an onboarding experience built to get new users up and running from day one. Also supported layout and implementation work across multiple client projects in Webflow.</p>
+          <span style="flex:0 0 180px;text-align:right;font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-secondary)">Year: 2026-Present</span>
+        </div>
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:var(--space-4) var(--grid-gutter);padding:var(--space-6) 0 var(--space-8);border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default)">
+          <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:var(--space-1)">
+            <span style="font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);font-weight:500">University of Europe for Applied Sciences</span>
+            <span style="font-size:var(--type-small);color:var(--text-secondary)">Bachelor of Arts in UX/UI Design</span>
+          </div>
+          <span style="flex:2 1 420px"></span>
+          <span style="flex:0 0 180px;text-align:right;font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-secondary)">August 2026</span>
+        </div>
+      </section>
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;box-sizing:border-box;padding:0 var(--grid-margin) var(--section-gap)">
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--space-3) var(--grid-gutter);padding:var(--space-4) 0 var(--space-8);border-top:1px solid var(--border-strong)">
+          <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">My Projects</span>
+          <p style="margin:0;max-width:44ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">Two case studies covering the full design process, from research and wireframes through to a shipped product.</p>
+        </div>
+        <div onMouseMove="{{ onMove }}" style="border-bottom:1px solid var(--border-default)">
+          <sc-for list="{{ rows }}" as="p" hint-placeholder-count="2">
+            <a href="#" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" data-reveal="" style="display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-4) var(--grid-gutter);padding:var(--space-8) 0 var(--space-9);border-top:1px solid var(--border-default);color:var(--text-primary);cursor:pointer">
+              <span style="flex:0 0 64px;display:flex;align-items:center;gap:var(--space-3);font-family:var(--font-mono);font-size:var(--type-small);color:{{ p.metaColor }};transition:color var(--dur-base) var(--ease-out)">{{ p.num }}<sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="width:12px;height:12px;border-radius:{{ p.shapeRadius }};background:{{ p.accent }};transform:{{ p.markRot }};transition:transform var(--dur-slow) var(--ease-out)"></span></sc-if></span>
+              <span style="flex:1 1 360px;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500;transform:{{ p.shift }};transition:transform var(--dur-base) var(--ease-out)">{{ p.title }}</span>
+              <span style="flex:0 1 340px;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.short }}</span>
+              <span style="flex:0 0 auto;display:flex;gap:var(--space-2);font-size:var(--type-small);color:{{ p.metaColor }};transition:color var(--dur-base) var(--ease-out)">
+                <span>View Details</span>
+                <span style="opacity:{{ p.arrowOp }};transform:{{ p.shift }};transition:all var(--dur-base) var(--ease-out)">→</span>
+              </span>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- CONTACT -->
+    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-11) var(--grid-margin) var(--section-gap);box-sizing:border-box">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-11) var(--grid-gutter);align-items:flex-start">
+          <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:var(--space-8)">
+            <h1 data-reveal="" style="margin:0;font-size:var(--type-display-xl);line-height:var(--lh-display-xl);letter-spacing:var(--tracking-display);font-weight:500">Contact</h1>
+            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="display:flex">
+              <div data-anim="morph" style="width:80px;height:80px;border-radius:50%;background:#6A4BC4"></div>
+              <div style="width:80px;height:80px;border-radius:100% 0 0 0;background:#6B7A70"></div>
+              <div data-anim="spin" style="width:80px;height:80px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div>
+              <div style="width:80px;height:80px;border-radius:0 0 100% 0;background:#3C4A6B"></div>
+            </div></sc-if>
+            <p data-reveal="" style="margin:0;max-width:20ch;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);text-wrap:pretty">Have a project in mind or want to talk? I'd love to hear from you.</p>
+          </div>
+          <div data-reveal="" style="flex:1 1 420px;max-width:600px;display:flex;flex-direction:column;gap:var(--space-8);padding-top:var(--space-4);border-top:1px solid var(--border-strong)">
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Send me a message</span><sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;gap:4px"><span style="width:14px;height:14px;border-radius:50%;background:#6A4BC4"></span><span data-anim="spin" style="width:14px;height:14px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></span><span style="width:14px;height:14px;border-radius:100% 0 0 0;background:#3C4A6B"></span></div></sc-if></div>
+            <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:var(--space-7)">
+                <div style="display:flex;flex-wrap:wrap;gap:var(--space-7) var(--grid-gutter)">
+                  <div style="flex:1 1 200px"><x-import component-from-global-scope="FedericoStefanDesignSystem_704060.Input" label="First Name" placeholder="Type here..." onChange="{{ setFirst }}" hint-size="100%,64px"></x-import></div>
+                  <div style="flex:1 1 200px"><x-import component-from-global-scope="FedericoStefanDesignSystem_704060.Input" label="Last Name" placeholder="Type here..." onChange="{{ setLast }}" hint-size="100%,64px"></x-import></div>
+                </div>
+                <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.Input" label="Email" type="email" placeholder="Type here..." onChange="{{ setEmail }}" hint-size="100%,64px"></x-import>
+                <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.Input" label="Your message" multiline="{{ true }}" onChange="{{ setMsg }}" hint-size="100%,140px"></x-import>
+                <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin:0;font-size:var(--type-small);color:var(--text-primary)">Oops! Something went wrong while submitting the form.</p>
+                </sc-if>
+                <div><x-import component-from-global-scope="FedericoStefanDesignSystem_704060.Button" variant="primary" arrow="{{ true }}" type="button" onClick="{{ submit }}" hint-size="160px,44px">Contact Now</x-import></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;padding:var(--space-6) 0;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading)">Thank you! Your submission has been received!</p>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <footer style="border-top:1px solid var(--border-default)">
+    <div style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-9) var(--grid-margin) var(--space-7);box-sizing:border-box;display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-8) var(--grid-gutter)">
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-9)">
+        <nav style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--type-small)">
+          <sc-for list="{{ footerNav }}" as="l" hint-placeholder-count="4">
+            <a href="#" onClick="{{ l.go }}">{{ l.label }}</a>
+          </sc-for>
+        </nav>
+        <nav style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--type-small)">
+          <span style="color:var(--text-secondary)">Projects</span>
+          <sc-for list="{{ rows }}" as="p" hint-placeholder-count="2">
+            <a href="#" onClick="{{ p.open }}">{{ p.title }}</a>
+          </sc-for>
+        </nav>
+      </div>
+      <div style="align-self:flex-end;display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-4)">
+        <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;gap:6px"><span style="width:12px;height:12px;border-radius:50%;background:#6A4BC4"></span><span data-anim="spin" style="width:12px;height:12px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></span><span style="width:12px;height:12px;border-radius:100% 0 0 0;background:#6B7A70"></span><span style="width:12px;height:12px;border-radius:50%;background:#3C4A6B"></span></div></sc-if>
+      <span style="font-size:var(--type-small);color:var(--text-secondary)">© Copyright 2026 | Designed by Federico Stefan</span>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showPreview }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;left:0;top:0;width:min(420px,32vw);aspect-ratio:4 / 3;pointer-events:none;z-index:20;transform:translate({{ px }}px,{{ py }}px);opacity:{{ pvOp }};transition:opacity var(--dur-base) var(--ease-out)">
+      <sc-for list="{{ rows }}" as="p" hint-placeholder-count="2">
+        <div style="position:absolute;inset:0;overflow:hidden;opacity:{{ p.pvOp }};transition:opacity var(--dur-base) var(--ease-out)">
+          <image-slot src="{{ p.pvSrc }}" id="{{ p.slug }}-pv" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+</div>
+  <sc-if value="{{ cvOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:200;background:var(--bg-page);display:flex;flex-direction:column">
+      <div style="flex:none;display:flex;justify-content:space-between;align-items:center;gap:var(--space-5);padding:var(--space-5) var(--grid-margin, 64px);border-bottom:1px solid var(--border-default)">
+        <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Federico Stefan · CV</span>
+        <div style="display:flex;gap:var(--space-6);align-items:center">
+          <a href="assets/Federico-Stefan-CV.pdf" onClick="{{ downloadCv }}" style="font-size:var(--type-small);color:var(--text-primary);text-decoration:underline;text-underline-offset:4px" style-hover="color:var(--accent)">Download ↓</a>
+          <button type="button" onClick="{{ closeCv }}" style="background:none;border:0;padding:0;cursor:pointer;font:inherit;font-size:var(--type-small);color:var(--text-primary)" style-hover="color:var(--accent)">Close ✕</button>
+        </div>
+      </div>
+      <div style="flex:1;overflow:auto;padding:var(--space-8) var(--space-5)">
+        <sc-if value="{{ cvLoading }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;text-align:center;font-size:var(--type-small);color:var(--text-secondary)">Loading…</p>
+        </sc-if>
+        <sc-if value="{{ cvFail }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;text-align:center;font-size:var(--type-small);color:var(--text-secondary)">The CV couldn't be displayed. Use Download instead.</p>
+        </sc-if>
+        <div ref="{{ cvBoxRef }}" style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:var(--space-6)"></div>
+      </div>
+    </div>
+  </sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;projects&quot;,&quot;anmeldung&quot;,&quot;collab&quot;,&quot;nordstern&quot;,&quot;about&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;caseLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;horizontal&quot;,&quot;vertical&quot;],&quot;default&quot;:&quot;horizontal&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;shapes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;hoverPreview&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;inkSection&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const PROJECTS = [
+  {
+    slug: 'anmeldung', title: 'ServicePortal Berlin', accent: '#C8102E',
+    panel: '#C8102E', mockMain: 'assets/serviceportal/hero.png', mockSecond: 'assets/serviceportal/ai-answer.png', mockRatios: ['1440 / 888', '1440 / 841'],
+    coverSrc: 'assets/serviceportal/hero.png', heroSrc: 'assets/serviceportal/hero.png',
+    media: {
+      fig1: ['assets/serviceportal/search-result.png', '1440 / 1312'], fig2: ['assets/serviceportal/ai-answer.png', '1440 / 841'], fig2b: ['assets/serviceportal/ai-uncertain.png', '1440 / 751'], fig3: ['assets/serviceportal/your-route.png', '1440 / 1634'],
+      extras: [['assets/serviceportal/where-and-when.png', '1440 / 1120'], ['assets/serviceportal/nearest-buergeramt.png', '1440 / 995', 'assets/serviceportal/office-view-more.png', '1440 / 1276'], ['assets/serviceportal/no-appointments.png', '1440 / 1284']],
+      pairs: [
+        { before: [['assets/serviceportal/live-search-no-results.png', '1600 / 909'], ['assets/serviceportal/live-chatbot-answer.png', '1600 / 909']], after: ['assets/serviceportal/ai-answer.png', '1440 / 841'], cap: 'Search for "register my address": no results. The chatbot in the corner answers the same question correctly.' },
+        { before: [['assets/serviceportal/live-search-anmeldung.png', '1600 / 911']], after: ['assets/serviceportal/official-name-card.png', '1160 / 620'], cap: 'Search for "Anmeldung": 34 results, starting with school enrolment and marriage.' },
+        { before: [['assets/serviceportal/live-service-page.png', '1600 / 908']], after: ['assets/serviceportal/your-route-result.png', '1160 / 480'], cap: 'Only German and easier German. The "Do it online now" button follows you down the page, even if you cannot use it.' },
+        { before: [['assets/serviceportal/live-location-list.png', '1200 / 1298'], ['assets/serviceportal/live-vorzugstermine.png', '1600 / 910']], after: ['assets/serviceportal/nearest-buergeramt.png', '1440 / 995'], cap: 'Every office by district, with only a name and an info icon.' },
+        { before: [['assets/serviceportal/live-error-selection.png', '1600 / 909']], after: ['assets/serviceportal/no-appointments.png', '1440 / 1284'], cap: '"An error has occurred. Your selection of location and service has changed."' }
+      ],
+      closing: ['assets/serviceportal/confirmation.png', '1440 / 1398']
+    },
+    extraFigs: [{ n: '04.', t: 'Where and when:', d: 'Users see they can book at any Bürgeramt in Berlin. Every time slot is labelled "Free" or "Taken" in words, and the deadline shows how many days are left.' },
+      { n: '05.', t: 'Nearest Bürgeramt:', d: 'Users enter their address and see the three closest offices. Office details stay hidden until they open them, so the page shows the offices that matter to them, not every detail of every office.' },
+      { n: '06.', t: 'No appointments online:', d: "Instead of an error message, the page explains that all appointments are in one shared system and new ones are added every day. It gives clear next steps: search all locations, book by phone, or go in person if the case is urgent." }],
+    short: 'A redesign of Berlin\'s Anmeldung booking flow, built so people who don\'t speak German can find, understand and book the service they need.',
+    role: 'UX/UI Designer', author: 'Federico Stefan', year: '2026©',
+    overview: "This is a self-initiated redesign of the Anmeldung booking flow on service.berlin.de, the official service portal of the city of Berlin. Anmeldung is the address registration everyone has to complete within 14 days of moving in. Without it you cannot open a bank account, get a tax ID or sign up for health insurance. I went through it myself after moving to Berlin from the Netherlands without speaking German, and conversations with other people who had moved here showed I was not the only one who struggled. Berlin already has a good AI chatbot that answers in English, but it sits in the corner of the page, while the search box and the booking flow around it only work in German. This project is not about visual design, so Berlin's identity stays as it is. It focuses on the flow: can someone who does not speak German understand what they need to do, find the route that applies to them and get an appointment before the deadline runs out?",
+    objectives: [
+      "Make the search box the assistant: let people ask in their own words and get an answer with its sources, instead of hiding the AI in a separate chat window.",
+      "Show every service with its official German name, a plain-language name and the name people actually use.",
+      "Replace one long page of rules with three short questions that only show the routes open to the user.",
+      "Help users find the nearest Bürgeramt from their address, since many newcomers do not know which district they live in.",
+      "Keep the 14-day deadline visible at every step, and explain clearly what to do when no appointment is available."
+    ],
+    fig1: { n: "01.", t: "Start page:", d: "Users describe what they need in their own words. They can find a service, ask a question or find an office, without knowing any official German terms." },
+    fig2: { n: "02.", t: "AI answer:", d: "Questions are answered in plain language, clearly labelled as an AI answer, with the official sources and the date they were checked. The answer leads straight into booking. When there is no source to base an answer on, the page says so and points to the Bürgertelefon 115 instead of guessing." },
+    fig3: { n: "03.", t: "Your route:", d: "Three questions decide which route is open. Routes that are not possible stay visible with a one-sentence reason, so users understand why instead of wondering what they missed." },
+    changedIntro: "The main problem with the original flow was not missing information. It was where the information lived and how much it expected the user to already know. Every change came back to the same question: does the user know what this is, whether it applies to them and what to do next?",
+    screens: [
+      { n: "Screen 1:", t: "Search and the AI chatbot:", d: "On the live portal, searching \"register my address\" returns no results. Asking the same question in the city's AI chatbot, a small icon in the corner of the page, gets a correct answer in English with sources. The two do not know about each other, and the one that works is the one people find last. The new design makes the search box the assistant, and the answer leads straight into booking." },
+      { n: "Screen 2:", t: "Service names:", d: "When I moved here, I thought \"Anmeldung\" meant registering your home. It simply means registration. On the live portal, searching \"Anmeldung\" returns 34 results, starting with a change of main residence, school enrolment and marriage notices. The new design keeps the official German name, since that is what staff at the Bürgeramt will use, and adds a plain-language name and the common term next to it." },
+      { n: "Screen 3:", t: "Service page:", d: "The live service page is available in German and in easier German, but not in English. It explains the online and in-person routes in one long text, and the button that stays on screen the whole time says \"Do it online now\", even though online registration is only open to German and EU citizens who moved within Germany. Someone moving from abroad is pushed towards a route they cannot use. The new design asks three questions first and only shows the routes that are actually open." },
+      { n: "Screen 4:", t: "Finding an office:", d: "The live booking page lists dozens of offices by district, with only a name and an info icon, and many appear twice with the label \"Vorzugstermine\". The details are on separate district websites, and users have to know which district they live in before they can choose. The new design adds an address search that finds the three closest offices, and shows each office's details only when you open them." },
+      { n: "Screen 5:", t: "When something goes wrong:", d: "The live booking flow is in German from start to finish. [When I picked a date shown as available, the page displayed \"hasNoDate\", an internal error code, with no explanation.] Another error page tells users their \"selection of location and service has changed\" without saying why. The advice for urgent cases is a single line at the bottom of the page. The new design explains the situation in plain language and puts the next steps right where the user hits the dead end, with the deadline still visible." }
+    ],
+    processIntro: 'The work is in the flow: what the user needs to know, in what order, and what happens when things go wrong.',
+    process: [
+      'Going through Anmeldung myself without speaking German, and noting every point where I got stuck or was unsure what applied to me.',
+      'Having conversations with people who had moved to Berlin, including students, colleagues, friends and strangers. I asked how moving into the city went, whether the city helped them, and how they found German bureaucracy. Without being asked, several said they had no idea which district they lived in. Some international students also told me the bureaucracy was part of why they were thinking of going home after their studies.',
+      'Researching the official service pages, with help from AI, to write plain-language information for the most used services: the German name, where to go, the fees and whether it can be done online.',
+      "Writing a spec and building the prototype in Claude Design, then reviewing and correcting every screen. My main additions were a search that works as an assistant, building on the city's existing 115 chatbot, an address search for the nearest Bürgeramt, and an office list that shows details only when you open them. The AI answers in the prototype are scripted to show how the feature should behave.",
+      'Adding accessibility controls from the start, such as text size, contrast, link underlining and reduced motion, because a government site has to work for people of every age and background. I also included the accessibility statement that Berlin law requires for public websites. I tested the whole booking flow using only a keyboard, at 200% zoom and at phone width, and it passed all three checks. Screen reader testing is still open, and the statement says so.'
+    ],
+    conclusion1: 'The visual direction was set by what already exists. Berlin\'s red, navy and header stay as they are, because people should recognise an official service they can trust. Red is only used as a marker, never for body text, and every status is written as a word, so the site still works without colour.',
+    conclusion2: 'The hardest part was being honest about what the site can and cannot do. A redesign cannot create more appointments, and an AI can be wrong. While I was building the prototype, the AI tool I used invented a rule about appointments being held back for the phone line. The official Berlin pages say the opposite. That mistake is why every answer in this design shows its source, and why the site says "I cannot answer that with confidence" instead of guessing. The next step is testing the flow with people who do not speak German.'
+  },
+  {
+    slug: 'nordstern', title: 'Nordstern', accent: '#3C4A6B',
+    panel: '#3C4A6B', mockMain: 'assets/nordstern/uebersicht.jpg', mockSecond: 'assets/nordstern/konto.jpg',
+    coverSrc: 'assets/nordstern/uebersicht.jpg', heroSrc: 'assets/nordstern/logo-large.png',
+    media: {
+      fig1: ['assets/nordstern/uebersicht.jpg', '2400 / 3137'], fig2: ['assets/nordstern/konto.jpg', '2400 / 2280'], fig3: ['assets/nordstern/bilder.jpg', '2400 / 2162'],
+      screens: [['assets/nordstern/screen-1-blogs.png', '2400 / 758'], ['assets/nordstern/screen-2-kalender.png', '2400 / 759'], ['assets/nordstern/screen-3-markenprofil.png', '2400 / 1280'], ['assets/nordstern/screen-4-auftraege.png', '2400 / 958']],
+      extras: [['assets/nordstern/auftraege-schedule.png', '2400 / 1941', 'Aufträge']]
+    },
+    short: 'An AI-powered content marketing platform built to simplify how teams create and manage their content strategy.',
+    role: 'UX/UI Designer', author: 'Federico Stefan', year: '2026©',
+    overview: 'Nordstern is an AI powered content marketing SaaS built by Turm & Leufer that autonomously plans, creates and publishes content for businesses. As the sole designer on the project, it covered the full design process, from building the brand identity from scratch through a complete design system and dashboard UI to having it delivered as a developer ready Figma handoff file. The goal was to make a technically complex AI product feel simple, controlled and trustworthy from the first interaction.',
+    objectives: [
+      'Define the full brand identity for Nordstern - logo, color palette, typography and visual language from scratch.',
+      'Built a complete design system with semantic color tokens and a typography scale that can be applied consistently across the dashboard and marketing surfaces.',
+      'Design the dashboard UI and information architecture from the ground up, covering all core screens including onboarding, content colendar, blog management, keyword tracking and account settings.',
+      'Ensure the interface communication feels approachable rather opaque even if it is an autonomous AI system.',
+      'Deliver developer ready Figma handoff files for direct implementation.'
+    ],
+    fig1: { n: '01.', t: 'Übersicht (Dashboard Overview):', d: 'The main dashboard showing the content queue, onboarding checklist, credits usage and system status. Designed so users always know what needs attention and what has already been done from the first login.' },
+    fig2: { n: '02.', t: 'Konto (Account Settings):', d: 'Account page covering brand profile, team management, CMS connection, subscription details and monthly quota. All platform settings consolidated in one place to reduce the need to navigate elsewhere.' },
+    fig3: { n: '03.', t: 'Bilder (Image Gallery):', d: 'AI-generated image library with linked and unlinked status indicators. Users can see at a glance which images are connected to content and which still need to be assigned or regenerated.' },
+    changedIntro: 'The core design challenge for Nordstern was not making individual screens look good but making a technically complex system feel like something a non-technical user could trust and navigate confidently. Every change across these four screens came back to the same question: does the user know where they are, what has been done, and what comes next?',
+    screens: [
+      { n: 'Screen 1:', t: 'Blogs (Content):', d: 'The original content page showed articles as plain text rows with minimal status information. The new design uses image cards with colour-coded status pills (Draft, In Review, Ready, Published, Cancelled) and a legend explaining each status. Users can now scan the page and understand the state of all their content in seconds without opening anything.' },
+      { n: 'Screen 2:', t: 'Content Kalender:', d: 'The original empty state showed a blank page with a single generate button and one line of instruction text. The new empty state includes a three-step explanation of how the calendar works before the user generates anything. This removes the uncertainty of clicking a button without knowing what happens next.' },
+      { n: 'Screen 3:', t: 'Markenprofil:', d: 'The original brand profile was a long single-page form with all fields visible at once, no sense of progress, and no indication of what was required versus optional. The new design breaks it into four named sections with a progress bar and completion status per section. Users always know how complete their profile is and what still needs attention.' },
+      { n: 'Screen 4:', t: 'Aufträge:', d: 'The original task page showed a raw data table with columns for action, status, credits, and timestamps. No explanation of what tasks are or how they relate to the rest of the platform. The new design adds a "How tasks work" explanation panel at the top and separates tasks into Today, Scheduled, and History groups. Users land on the page and immediately understand what they are looking at.' }
+    ],
+    processIntro: 'The creative process for Nordstern began with one core challenge: making an autonomous AI system feel approachable rather than intimidating. The product runs complex operations in the background, but the user should never feel like they are managing a machine. Every design decision came back to that.',
+    process: [
+      'Defining the full brand identity from scratch, including logo, color palette, typography and visual language.',
+      'Building a complete design system with semantic color tokens and a typography scale that could be applied consistently across the dashboard and marketing surfaces.',
+      'Designing the dashboard UI and information architecture covering all core screens including onboarding, content calendar, blog management, keyword tracking and account settings.',
+      'Establishing a clear onboarding flow to guide new users through platform setup step by step, making sure the connection between each section felt logical from the first login.',
+      'Delivering a developer ready Figma handoff file for direct implementation.'
+    ],
+    conclusion1: 'The visual direction for Nordstern was intentional from the start. A dark, monochromatic palette keeps the interface from competing with the content itself. Color is used sparingly and purposefully, mainly through status pills, so users always know what a section is for without having to read everything on screen.',
+    conclusion2: 'The hardest part of the project was not designing individual screens but making the full flow feel connected. Nordstern does a lot behind the scenes, and the job of the design was to make sure users always knew where they were, what had been done, and what came next. Getting that clarity right across onboarding, the dashboard overview, and the content calendar is what the design work was really about.'
+  },
+  {
+    slug: 'collab', title: 'Collab.', accent: '#6A4BC4',
+    panel: '#C3B1E8', mockMain: 'assets/collab/web/dashboard.png', mockSecond: 'assets/collab/web/project-view.png',
+    coverSrc: 'assets/collab/web/dashboard.png', heroSrc: 'assets/collab/web/logo-dark.png',
+    media: {
+      fig1: ['assets/collab/web/design-system.png', '2750 / 1000'], fig2: ['assets/collab/web/project-view.png', '1040 / 1000'], fig3: ['assets/collab/web/new-project-1.png', '1179 / 1000'],
+      screens: [['assets/collab/screen-1-basics.png', '1958 / 986'], ['assets/collab/screen-2-roles.png', '1492 / 986'], ['assets/collab/screen-3-timeline.png', '2264 / 872'], ['assets/collab/screen-4-preview.png', '2356 / 988']],
+      extras: [['assets/collab/web/new-project-2.png', '2000 / 2580', 'Define roles & timeline'], ['assets/collab/web/onboarding-2.png', '2000 / 2202', 'Build your profile'], ['assets/collab/web/dashboard.png', '2000 / 2320', 'Dashboard']]
+    },
+    short: 'Web platform designed to connect project owners with the right collaborators, built around simplicity and ease of use.',
+    role: 'UX/UI Designer', author: 'Federico Stefan', year: '2026©',
+    overview: 'Collab. is a web-based platform designed to connect project owners with the right collaborators. The goal was to simplify how people find and join meaningful projects by removing the friction that makes collaboration feel harder than it should be. The process covered end-to-end UX design, from initial research and journey mapping through to a fully tested, high fidelity prototype. Every design decision was guided by one question: does this make the next step feel obvious to the user?',
+    objectives: [
+      'Designing a platform that makes finding and joining collaborative projects feel simple and intuitive.',
+      'Mapping dual user journeys for both Project Owners and Collaborators across the full platform experience.',
+      'Building a design system from scratch that maintains visual consistency across all screens.',
+      'Identifying and remove friction points across the project creation flow through iterative design critiques.',
+      'Delivering a fully documented, high fidelity prototype ready for development handoff.'
+    ],
+    fig1: { n: '01.', t: 'Design System:', d: 'Typography scale, spacing tokens, form inputs, alerts, buttons and status badges. Built from scratch to ensure visual consistency across every screen.' },
+    fig2: { n: '02.', t: 'ReTrace project detail:', d: 'Project detail view showing open roles, commitment level and application flow. Designed to give collaborators everything they need to decide whether to apply.' },
+    fig3: { n: '03.', t: 'Build your project (Step 1):', d: 'Project creation flow, Step 1 of 4. Users define the project title, focus area and description before moving forward.' },
+    changedIntro: 'While working on each screen, it became clear that the most common issues in a user flow don\u2019t come from missing features but from small decisions. Unclear labels, inputs that ask too much, or a CTA that sets the wrong expectation. What made the biggest difference between Version A and Version B was not the visual but the assumption that the user already knew what to do. Adding visible options, clearer labels and short helper texts made each step feel easier to complete.',
+    screens: [
+      { n: 'Screen 1', t: 'Basics:', d: 'Focus area moved from a hidden dropdown to visible pills. Labels updated from "Field/Discipline" to "Focus Area (required)" and helper text added to reduce pressure around making a permanent choice.' },
+      { n: 'Screen 2', t: 'Roles & Skills:', d: 'Free text input replaced with a grouped tag selector organised by category. Role description now appears only after selecting a pill, making the form feel less like a job listing. Skills field renamed to "Helpful skills or tools (optional)".' },
+      { n: 'Screen 3', t: 'Timeline:', d: 'The only change was the CTA. "Almost done" was inaccurate because another step remained. Renamed to "Next: preview" to give users the right expectation before clicking.' },
+      { n: 'Screen 4', t: 'Preview & Publishing:', d: '"Field" renamed to "Focus Area" for consistency. Roles changed from plain text to pill format matching the rest of the flow. Edit reminder added at the bottom to reduce pressure before publishing.' }
+    ],
+    processIntro: 'The creative process for Collab. began with identifying the gap in the market, between collaboration tools that were either too complex or too narrow for the scope. This document outlines the key stages that were taken to transform that problem into a fully designed web platform, from early research through the iteration stages.',
+    process: [
+      'Conducting user research analysing existing collaboration and project management tools to identify usability failures.',
+      'Defining the problem statement around reducing friction points in how people find and join meaningful projects.',
+      'Mapping a dual user journey for Project Owners and Collaborators to identify where confusion and friction would be.',
+      'Building a design system from scratch to ensure visual consistency across all screens and user flows.',
+      'Iteration across four key flows comparing original and revised designs to remove friction and improve clarity.'
+    ],
+    conclusion1: 'Collab. reinforced a core design belief: the biggest friction points in a user flow rarely come from missing features but from small decisions such as a label that assumes too much, a CTA that sets the wrong expectation or a choice hidden inside a dropdown. Making sure to address those details is what makes the difference between a product users tolerate and one they trust.',
+    conclusion2: 'Working on the iterative design process across the four flows showed that clarity doesn\u2019t require adding more. It requires making sure what\u2019s already there guides the user forward.'
+  }
+];
+
+const STEPS = [
+  'Getting familiar with the product, the goal and the people it\u2019s built for.',
+  'Identifying what the problem is before touching any design tool.',
+  'Defining the right language that gives the product its identity and consistency.',
+  'Exploring user needs, mapping journeys and finding patterns that inform decisions.',
+  'Translating research into interfaces. From early wireframes to high fidelity screens.',
+  'Comparing versions, identifying friction points and refining until the experience feels right.'
+];
+
+const NAV = { Home: 'home', Projects: 'projects', About: 'about', Contact: 'contact' };
+const pad = n => String(n).padStart(2, '0');
+
+class Component extends DCLogic {
+  state = { theme: (() => { try { return localStorage.getItem('fs-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) { return 'light'; } })(), page: this.props.startPage ?? 'home', hov: null, px: 0, py: 0, first: '', last: '', email: '', msg: '', sent: false, error: false };
+
+  cv(e, dl) {
+    e.preventDefault();
+    if (!dl) return this.viewCv();
+    const win = null;
+    const done = url => { const a = document.createElement('a'); a.href = url; a.download = 'Federico-Stefan-CV.pdf'; document.body.appendChild(a); a.click(); a.remove(); };
+    if (this.cvUrl) return done(this.cvUrl);
+    fetch('assets/Federico-Stefan-CV.pdf').then(r => r.ok ? r.blob() : Promise.reject(r))
+      .then(b => { this.cvUrl = URL.createObjectURL(new Blob([b], { type: 'application/pdf' })); done(this.cvUrl); })
+      .catch(() => { if (win) win.close(); window.location.href = 'assets/Federico-Stefan-CV.pdf'; });
+  }
+  loadPdfJs() {
+    if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+    return new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+      s.onload = () => { window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'; res(window.pdfjsLib); };
+      s.onerror = rej; document.head.appendChild(s);
+    });
+  }
+  viewCv() {
+    this.setState({ cvOpen: true, cvLoading: true, cvFail: false });
+    document.body.style.overflow = 'hidden';
+    Promise.all([this.loadPdfJs(), fetch('assets/Federico-Stefan-CV.pdf').then(r => r.arrayBuffer())])
+      .then(([lib, buf]) => lib.getDocument({ data: buf }).promise)
+      .then(async pdf => {
+        const box = this.cvBox; if (!box) return;
+        box.innerHTML = '';
+        const w = Math.min(box.clientWidth, 900), dpr = window.devicePixelRatio || 1;
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const vp0 = page.getViewport({ scale: 1 }); const vp = page.getViewport({ scale: (w / vp0.width) * dpr });
+          const c = document.createElement('canvas'); c.width = vp.width; c.height = vp.height;
+          c.style.cssText = 'display:block;width:' + w + 'px;max-width:100%;height:auto;background:#fff';
+          box.appendChild(c);
+          await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+        }
+        this.setState({ cvLoading: false });
+      })
+      .catch(() => this.setState({ cvLoading: false, cvFail: true }));
+  }
+  closeCv() { this.setState({ cvOpen: false }); document.body.style.overflow = ''; }
+  componentDidMount() {
+    this.reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!this.reduced && 'IntersectionObserver' in window) {
+      this.io = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+      }), { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }
+    this.scan();
+    this.t = setInterval(() => this.scan(), 600);
+  }
+  componentWillUnmount() {
+    clearInterval(this.t); this.io && this.io.disconnect(); this.ro && this.ro.disconnect();
+    window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize);
+  }
+  componentDidUpdate(pp) {
+    if (pp.startPage !== this.props.startPage && this.props.startPage) this.go(this.props.startPage);
+    this.scan(); this.measure();
+  }
+  setOuter = el => { this.hOuter = el; };
+  setSticky = el => { this.hSticky = el; };
+  setBar = el => { this.hBar = el; };
+  setTrack = el => {
+    if (this.hTrack === el) return;
+    this.ro && this.ro.disconnect();
+    this.hTrack = el;
+    if (el && 'ResizeObserver' in window) { this.ro = new ResizeObserver(() => this.measure()); this.ro.observe(el); }
+    if (!this.hListen) {
+      this.hListen = true;
+      this.onScroll = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.update(); }); };
+      this.onResize = () => { this.setState({ narrow: window.innerWidth < 760 || window.innerHeight < 480 }); this.measure(); };
+      window.addEventListener('scroll', this.onScroll, { passive: true });
+      window.addEventListener('resize', this.onResize);
+    }
+    this.measure();
+  };
+  measure() {
+    if (!this.hOuter || !this.hTrack || !this.hSticky || !this.hOuter.isConnected) return;
+    const max = Math.max(0, this.hTrack.scrollWidth - this.hSticky.clientWidth);
+    this.hMax = max;
+    this.hOuter.style.height = (this.hSticky.clientHeight + max) + 'px';
+    this.update();
+  }
+  update() {
+    if (!this.hOuter || !this.hTrack || !this.hOuter.isConnected) return;
+    const top = this.hSticky.offsetTop - this.hOuter.getBoundingClientRect().top - this.hSticky.offsetTop;
+    const head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
+    const x = Math.min(this.hMax || 0, Math.max(0, head - this.hOuter.getBoundingClientRect().top));
+    this.hTrack.style.transform = 'translate3d(' + (-x) + 'px,0,0)';
+    if (this.hBar) this.hBar.style.transform = 'scaleX(' + (this.hMax ? x / this.hMax : 0) + ')';
+  }
+  animate() {
+    if (this.reduced || !Element.prototype.animate) return;
+    const K = {
+      spin: [[{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }], { duration: 18000, iterations: Infinity }],
+      morph: [[{ borderRadius: '50%' }, { borderRadius: '38% 62% 55% 45% / 52% 40% 60% 48%' }, { borderRadius: '60% 40% 42% 58% / 45% 58% 42% 55%' }, { borderRadius: '50%' }], { duration: 9000, iterations: Infinity, easing: 'ease-in-out' }],
+      float: [[{ transform: 'translateY(0)' }, { transform: 'translateY(-8px)' }], { duration: 2600, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' }],
+      breathe: [[{ transform: 'scale(1)' }, { transform: 'scale(0.82)' }], { duration: 3400, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' }],
+      wobble: [[{ transform: 'rotate(0deg)' }, { transform: 'rotate(90deg)' }, { transform: 'rotate(90deg)' }, { transform: 'rotate(0deg)' }], { duration: 6000, iterations: Infinity, easing: 'cubic-bezier(.22,.61,.36,1)' }]
+    };
+    const wavy = (lobes, amp, phase, twist) => {
+      const pts = [];
+      for (let i = 0; i < 120; i++) {
+        const t = (i / 120) * Math.PI * 2;
+        const w = (1 - Math.cos(lobes * t + phase)) / 2;
+        const r = 50 * (1 - amp * Math.pow(w, 1.4)) * (1 - twist * (1 - Math.cos(2 * t + phase * 0.5)) / 2);
+        pts.push((50 + r * Math.cos(t)).toFixed(2) + '% ' + (50 + r * Math.sin(t)).toFixed(2) + '%');
+      }
+      return 'polygon(' + pts.join(',') + ')';
+    };
+    let n = 0;
+    document.querySelectorAll('[data-anim]').forEach(el => {
+      const k = el.getAttribute('data-anim');
+      if (el.__anim === k || !K[k]) return;
+      if (el.__a) el.__a.cancel();
+      el.__anim = k;
+      if (k === 'morph') {
+        const lobes = [7, 5, 9, 6, 8][n++ % 5];
+        const T = Math.PI * 2;
+        el.style.borderRadius = '0';
+        el.__a = el.animate([
+          { clipPath: wavy(lobes, 0.34, 0, 0.06) },
+          { clipPath: wavy(lobes, 0.5, T / 3, 0.14) },
+          { clipPath: wavy(lobes, 0.26, (2 * T) / 3, 0.02) },
+          { clipPath: wavy(lobes, 0.34, T, 0.06) }
+        ], { duration: 14000, iterations: Infinity, easing: 'linear', delay: -Math.random() * 14000 });
+        return;
+      }
+      el.__a = el.animate(K[k][0], { ...K[k][1], delay: -Math.random() * 4000 });
+    });
+  }
+  scan() {
+    this.animate();
+    if (!this.io) return;
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) return;
+      el.style.opacity = '0'; el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out)';
+      this.io.observe(el);
+    });
+  }
+  go(page) {
+    this.setState({ page, hov: null, sent: false, error: false });
+    window.scrollTo(0, 0);
+  }
+
+  setTheme(theme) {
+    this.setState({ theme });
+    try { localStorage.setItem('fs-theme', theme); } catch (e) {}
+  }
+  renderVals() {
+    const s = this.state;
+    const nav = fn => e => { e && e.preventDefault && e.preventDefault(); fn(); };
+    const dark = s.theme === 'dark';
+    const mix = (a, pct) => 'color-mix(in srgb, var(--fs-paper) ' + pct + '%, var(--fs-ink))';
+    const tv = dark ? {
+      bgPage: 'var(--fs-ink)', bgSurface: mix(0, 7), bgRaised: mix(0, 10), bgInverse: 'var(--fs-paper)',
+      textPrimary: 'var(--fs-paper)', textSecondary: 'var(--fs-ash)', textMuted: 'var(--fs-graphite)', textInverse: 'var(--fs-ink)',
+      borderDefault: mix(0, 16), borderStrong: 'var(--fs-paper)',
+      accent: 'color-mix(in srgb, var(--fs-sage) 65%, var(--fs-paper))', accentHover: 'var(--fs-sage-tint)', accentSubtle: 'color-mix(in srgb, var(--fs-sage) 35%, var(--fs-ink))'
+    } : {
+      bgPage: 'var(--fs-paper)', bgSurface: 'var(--fs-stone)', bgRaised: 'var(--fs-white)', bgInverse: 'var(--fs-ink)',
+      textPrimary: 'var(--fs-ink)', textSecondary: 'var(--fs-graphite)', textMuted: 'var(--fs-ash)', textInverse: 'var(--fs-paper)',
+      borderDefault: 'var(--fs-line)', borderStrong: 'var(--fs-ink)',
+      accent: 'var(--fs-sage)', accentHover: 'var(--fs-sage-dark)', accentSubtle: 'var(--fs-sage-tint)'
+    };
+    document.body.style.background = dark ? '#111111' : '#F7F7F5';
+    const ink = (this.props.inkSection ?? false) && !dark;
+    const idx = PROJECTS.findIndex(p => p.slug === s.page);
+    const rows = PROJECTS.map((p, i) => {
+      const on = s.hov === i;
+      return {
+        ...p, num: pad(i + 1), stagger: i % 2 ? 'var(--space-13)' : '0px',
+        coverLabel: p.title + ' \u2014 cover image', coverSrc: p.coverSrc,
+        open: nav(() => this.go(p.slug)),
+        enter: () => this.setState({ hov: i }), leave: () => this.setState({ hov: null }),
+        shift: on ? 'translateX(var(--hover-shift))' : 'none',
+        metaColor: on ? 'var(--accent)' : 'var(--text-secondary)',
+        arrowOp: on ? 1 : 0, pvOp: on ? 1 : 0, zoom: on ? 'scale(1.03)' : 'none', ...(() => {
+          if (!p.mockRatios) return { mW: '66%', mTop: '9%', mHt: '100%', sW: '34%', sTop: '30%', sBottom: 'auto', sHt: '62%', imgFlex: '1', mAR: 'auto', sAR: 'auto' };
+          const rr = p.mockRatios.map(s => { const [a, b] = s.split('/').map(Number); return a / b; });
+          const H = 56.25, bar = 2.2;
+          const mW = Math.min(58, (0.80 * H - bar) * rr[0]), mH = mW / rr[0] + bar;
+          const sW = Math.min(34, (0.60 * H - bar) * rr[1]);
+          return { mHt: 'auto', sTop: 'auto', sHt: 'auto', imgFlex: 'none', mW: mW + '%', mTop: ((H - mH) / 2 / H * 100).toFixed(2) + '%', sW: sW + '%', sBottom: '9%', mAR: p.mockRatios ? p.mockRatios[0] : '16 / 10', sAR: p.mockRatios ? p.mockRatios[1] : '16 / 10' };
+        })(), pvSrc: p.heroSrc || p.coverSrc || 'data:image/gif;base64,R0lGODlhAQABAAAAACw=',
+        shapeRadius: i === 0 ? '50%' : '0', markRot: on ? (i === 0 ? 'scale(1.4)' : 'rotate(45deg)') : 'none'
+      };
+    });
+    let p = null;
+    if (idx >= 0) {
+      const c = PROJECTS[idx], nx = (idx + 1) % PROJECTS.length;
+      const M = c.media || {};
+      const DR = { fig1: '16 / 9', fig2: '4 / 3', fig3: '4 / 5' };
+      const lab = (f, k) => ({ ...f, label: f.n + ' ' + f.t.replace(/:$/, ''), src: M[k] ? M[k][0] : undefined, ratio: M[k] ? M[k][1] : DR[k], has2: !!M[k + 'b'], src2: M[k + 'b'] ? M[k + 'b'][0] : undefined, ratio2: M[k + 'b'] ? M[k + 'b'][1] : '4 / 3' });
+      p = {
+        ...c, counter: pad(idx + 1) + ' / ' + pad(PROJECTS.length),
+        heroLabel: c.title + ' \u2014 key visual',
+        fig1: (() => {
+          const f = lab(c.fig1, 'fig1'); const [w, hh] = f.ratio.split('/').map(Number); const tall = w / hh < 1.2;
+          return { ...f, fdir: tall ? 'row' : 'column', h: tall ? '100%' : 'calc(100% - 120px)', capDir: tall ? 'column' : 'row', capW: tall ? '300px' : '0px', capMin: tall ? '0px' : '100%', vmax: tall ? '760px' : 'none' };
+        })(), fig2: lab(c.fig2, 'fig2'), fig3: lab(c.fig3, 'fig3'),
+        extras: (c.extraFigs ? c.extraFigs.map((f, j) => { const e = (M.extras || [])[j] || []; return { src: e[0], ratio: e[1] || '4 / 3', label: f.n + ' ' + f.t.replace(/:$/, ''), n: f.n, t: f.t, d: f.d, hasCap: true, has2: !!e[2], src2: e[2], ratio2: e[3] || '4 / 3', id: c.slug + '-extra' + (j + 1) }; }) : (M.extras || []).map((e, j) => ({ src: e[0], ratio: e[1], label: e[2], hasCap: false, id: c.slug + '-extra' + (j + 1) }))),
+        objectivesN: c.objectives.map((t, i) => ({ n: pad(i + 1), t })),
+        processN: c.process.map((t, i) => { const im = (M.process || {})[i]; return { n: pad(i + 1), t, hasImg: !!im, img: im ? im[0] : undefined, imgRatio: im ? im[1] : '4 / 3', imgId: c.slug + '-process' + (i + 1) }; }),
+        hasClosing: !!M.closing, closingSrc: M.closing ? M.closing[0] : undefined, closingRatio: M.closing ? M.closing[1] : '4 / 3',
+        screensN: c.screens.map((x, i) => ({ ...x, id: c.slug + '-screen' + (i + 1), label: x.n.replace(/:$/, '') + ' \u2014 ' + x.t.replace(/:$/, ''), src: M.screens ? M.screens[i][0] : undefined, ratio: M.screens ? M.screens[i][1] : '16 / 10', dir: i % 2 ? 'row-reverse' : 'row', vdir: i % 2 ? 'column-reverse' : 'column', ...(() => { const P = (M.pairs || [])[i]; return { isPair: !!P, notPair: !P, cap: P ? P.cap : '', before: P ? P.before.map((b, j) => ({ src: b[0], ratio: b[1], id: c.slug + '-screen' + (i + 1) + '-before' + (j + 1) })) : [], afterSrc: P ? P.after[0] : undefined, afterRatio: P ? P.after[1] : '16 / 10' }; })() })),
+        nextTitle: PROJECTS[nx].title, nextCounter: pad(nx + 1) + ' / ' + pad(PROJECTS.length),
+        openNext: nav(() => this.go(PROJECTS[nx].slug))
+      };
+    }
+    const activeNav = idx >= 0 ? 'Projects' : Object.keys(NAV).find(k => NAV[k] === s.page);
+    return {
+      navLinks: Object.keys(NAV), activeNav, tv,
+      headerNav: Object.keys(NAV).map(label => ({ label, go: nav(() => this.go(NAV[label])), color: label === activeNav ? 'var(--accent)' : 'var(--text-primary)', dot: label === activeNav ? 'inline-block' : 'none' })),
+      goHome: nav(() => this.go('home')),
+      isLight: !dark, isDark: dark,
+      setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark'),
+      lightColor: dark ? 'var(--text-muted)' : 'var(--text-primary)', darkColor: dark ? 'var(--text-primary)' : 'var(--text-muted)',
+      onNav: l => this.go(NAV[l] || 'home'),
+      footerNav: Object.keys(NAV).map(label => ({ label, go: nav(() => this.go(NAV[label])) })),
+      isHome: s.page === 'home', isAbout: s.page === 'about', isProjects: s.page === 'projects', isContact: s.page === 'contact', isCase: !!p,
+      isCaseH: !!p && (this.props.caseLayout ?? 'horizontal') === 'horizontal' && !(s.narrow ?? (window.innerWidth < 760 || window.innerHeight < 480)),
+      isCaseV: !!p && !((this.props.caseLayout ?? 'horizontal') === 'horizontal' && !(s.narrow ?? (window.innerWidth < 760 || window.innerHeight < 480))),
+      setOuter: this.setOuter, setSticky: this.setSticky, setTrack: this.setTrack, setBar: this.setBar,
+      rows, p: p || {}, steps: STEPS.map((t, i) => {
+        const sp = 'polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)';
+        const pl = 'polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%)';
+        const d = [
+          { color: '#6A4BC4', radius: '50%', anim: 'morph' },
+          { color: '#C3B1E8', radius: '0', clip: sp, anim: 'spin' },
+          { color: '#6B7A70', radius: '100% 0 0 0', anim: 'wobble' },
+          { color: 'transparent', radius: '50%', border: '9px solid #6A4BC4', anim: 'float' },
+          { color: '#3C4A6B', radius: '0', clip: pl, anim: 'spin' },
+          { color: '#C3B1E8', radius: '20px 20px 0 0', anim: 'breathe' }
+        ][i];
+        return { n: pad(i + 1), t, border: 'none', clip: 'none', ...d };
+      }),
+      showShapes: this.props.shapes ?? true,
+      shQ: s.hov === 0 ? 'rotate(90deg)' : s.hov === 1 ? 'rotate(180deg)' : 'none',
+      shH: s.hov === 0 ? 'rotate(180deg)' : s.hov === 1 ? 'rotate(90deg)' : 'none',
+      shC: s.hov === null ? 'scale(0.5)' : 'scale(1)',
+      goAbout: nav(() => this.go('about')), goProjects: nav(() => this.go('projects')),
+      showPreview: s.page === 'about' && (this.props.hoverPreview ?? true),
+      onMove: e => this.setState({ px: e.clientX + 32, py: e.clientY - 150 }),
+      px: s.px, py: s.py, pvOp: s.hov === null ? 0 : 1,
+      changedBg: ink ? 'var(--bg-inverse)' : 'var(--bg-surface)',
+      changedInk: ink ? 'var(--text-inverse)' : 'var(--text-primary)',
+      changedMuted: ink ? 'var(--fs-ash)' : 'var(--text-secondary)',
+      changedRule: ink ? '#333333' : 'var(--border-strong)',
+      changedSlot: ink ? '#1C1C1C' : 'var(--bg-page)',
+      setFirst: e => this.setState({ first: e.target.value }), setLast: e => this.setState({ last: e.target.value }),
+      setEmail: e => this.setState({ email: e.target.value }), setMsg: e => this.setState({ msg: e.target.value }),
+      submit: e => {
+        e && e.preventDefault && e.preventDefault();
+        if (s.sending) return;
+        if (!/.+@.+\..+/.test(s.email) || !s.msg.trim()) { this.setState({ error: true }); return; }
+        this.setState({ sending: true, error: false });
+        fetch('https://formsubmit.co/ajax/fedestefan@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            name: (s.first + ' ' + s.last).trim(), email: s.email, message: s.msg,
+            _subject: 'Portfolio message from ' + ((s.first + ' ' + s.last).trim() || s.email),
+            _replyto: s.email, _template: 'table', _captcha: 'false'
+          })
+        }).then(r => r.ok ? r.json() : Promise.reject(r))
+          .then(d => { const ok = d && (d.success === true || d.success === 'true'); this.setState({ sending: false, sent: ok, error: !ok }); })
+          .catch(() => this.setState({ sending: false, error: true }));
+      },
+      formOpen: !s.sent, formSent: s.sent, formError: s.error,
+      downloadCv: e => this.cv(e, true),
+      openCv: e => this.cv(e, false),
+      cvOpen: !!s.cvOpen, cvLoading: !!s.cvLoading, cvFail: !!s.cvFail,
+      closeCv: () => this.closeCv(),
+      cvBoxRef: el => { this.cvBox = el; }
+    };
+  }
+}
+</script>
+</body>
+</html>

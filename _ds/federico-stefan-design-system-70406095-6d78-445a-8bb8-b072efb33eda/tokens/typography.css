@@ -1,0 +1,33 @@
+:root{
+--font-sans:"Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+--font-mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+--weight-light:300; /* @kind font */
+--weight-regular:400; /* @kind font */
+--weight-medium:500; /* @kind font */
+--weight-semibold:600; /* @kind font */
+/* Scale */
+--type-display-xl:clamp(64px,8vw,144px);
+--type-display:clamp(48px,6vw,96px);
+--type-h1:clamp(40px,4.4vw,64px);
+--type-h2:clamp(30px,3vw,44px);
+--type-h3:clamp(22px,2vw,30px);
+--type-body-lg:clamp(19px,1.5vw,22px);
+--type-body:17px;
+--type-small:13px;
+--type-micro:11px;
+/* Line heights */
+--lh-display-xl:0.92; /* @kind other */
+--lh-display:0.95; /* @kind other */
+--lh-h1:1; /* @kind other */
+--lh-h2:1.1; /* @kind other */
+--lh-h3:1.2; /* @kind other */
+--lh-body-lg:1.45; /* @kind other */
+--lh-body:1.6; /* @kind other */
+--lh-small:1.45; /* @kind other */
+--lh-micro:1.3; /* @kind other */
+/* Tracking */
+--tracking-display:-0.045em;
+--tracking-heading:-0.03em;
+--tracking-body:-0.005em;
+--tracking-label:0.08em;
+}

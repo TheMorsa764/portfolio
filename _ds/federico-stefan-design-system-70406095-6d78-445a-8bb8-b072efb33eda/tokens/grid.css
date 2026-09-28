@@ -1,0 +1,18 @@
+:root{
+--grid-columns:12; /* @kind other */
+--grid-gutter:32px;
+--grid-margin:clamp(64px,5vw,120px);
+--content-max:1600px;
+--header-height:72px;
+}
+@media (max-width:1024px){:root{
+--grid-columns:8; /* @kind other */
+--grid-gutter:24px;
+--grid-margin:40px;
+}}
+@media (max-width:640px){:root{
+--grid-columns:4; /* @kind other */
+--grid-gutter:16px;
+--grid-margin:20px;
+--header-height:60px;
+}}

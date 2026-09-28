@@ -1,0 +1,33 @@
+:root{
+/* Base neutrals */
+--fs-paper:#F7F7F5;
+--fs-ink:#111111;
+--fs-graphite:#666666;
+--fs-ash:#999999;
+--fs-line:#DCDCDC;
+--fs-stone:#EEEEEC;
+--fs-white:#FFFFFF;
+/* Accent — sage */
+--fs-sage:#6B7A70;
+--fs-sage-dark:#55635A;
+--fs-sage-tint:#E4E8E4;
+/* Semantic */
+--bg-page:var(--fs-paper);
+--bg-surface:var(--fs-stone);
+--bg-raised:var(--fs-white);
+--bg-inverse:var(--fs-ink);
+--text-primary:var(--fs-ink);
+--text-secondary:var(--fs-graphite);
+--text-muted:var(--fs-ash);
+--text-inverse:var(--fs-paper);
+--text-accent:var(--fs-sage);
+--border-default:var(--fs-line);
+--border-strong:var(--fs-ink);
+--accent:var(--fs-sage);
+--accent-hover:var(--fs-sage-dark);
+--accent-subtle:var(--fs-sage-tint);
+--focus-ring:var(--fs-sage);
+--image-placeholder:var(--fs-stone);
+/* Per-project accent slot — override on a case-study wrapper */
+--project-accent:var(--fs-sage);
+}

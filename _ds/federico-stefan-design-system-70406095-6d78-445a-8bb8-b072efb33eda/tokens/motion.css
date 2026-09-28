@@ -1,0 +1,16 @@
+:root{
+--ease-out:cubic-bezier(0.22,0.61,0.36,1); /* @kind other */
+--ease-in-out:cubic-bezier(0.65,0,0.35,1); /* @kind other */
+--dur-fast:180ms; /* @kind other */
+--dur-base:350ms; /* @kind other */
+--dur-slow:500ms; /* @kind other */
+--hover-image-scale:1.03; /* @kind other */
+--hover-shift:6px; /* @kind other */
+}
+@media (prefers-reduced-motion:reduce){:root{
+--dur-fast:0ms; /* @kind other */
+--dur-base:0ms; /* @kind other */
+--dur-slow:0ms; /* @kind other */
+--hover-image-scale:1; /* @kind other */
+--hover-shift:0px; /* @kind other */
+}}
