@@ -20,6 +20,7 @@
   <script src="_ds/federico-stefan-design-system-70406095-6d78-445a-8bb8-b072efb33eda/_ds_bundle.js"></script>
   <script src="./image-slot.js"></script>
   <style>
+    @media (max-width:759px){footer a,a[data-tap],[data-tap] a{display:inline-flex;align-items:center;min-height:44px}}
     body{margin:0;background:var(--bg-page);color:var(--text-primary);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
     a:hover{color:var(--accent)}
@@ -31,7 +32,7 @@
   <header style="position:sticky;top:0;z-index:30;background:{{ headerBg }};backdrop-filter:{{ headerBlur }};-webkit-backdrop-filter:{{ headerBlur }}">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-5);height:var(--header-height);padding:0 var(--grid-margin);max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;box-sizing:border-box">
       <div style="display:flex;align-items:baseline;gap:var(--space-9);min-width:0">
-        <a href="#" onClick="{{ goHome }}" style="font-size:15px;font-weight:500;letter-spacing:-0.02em;color:var(--text-primary);white-space:nowrap">Federico Stefan</a>
+        <a href="#" data-tap="" onClick="{{ goHome }}" style="font-size:15px;font-weight:500;letter-spacing:-0.02em;color:var(--text-primary);white-space:nowrap">Federico Stefan</a>
         <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}"><span style="font-size:13px;color:var(--text-secondary);white-space:nowrap">UX/UI Designer</span></sc-if>
       </div>
       <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
@@ -91,13 +92,13 @@
             <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Federico Stefan · UX/UI Designer based in Berlin</span>
             <h1 style="margin:0;max-width:22ch;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500;text-wrap:balance">I turn complex products into interfaces that feel simple from the first click.</h1>
           </div>
-          <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(2,64px)">
+          <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="display:grid;grid-template-columns:repeat(3,40px);grid-template-rows:repeat(2,40px);opacity:.9">
             <div data-anim="morph" style="border-radius:50%;background:#6A4BC4"></div>
             <div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div>
-            <div style="border-radius:100% 0 0 0;background:#3C4A6B;transform:{{ shQ }};transition:transform var(--dur-slow) var(--ease-out)"></div>
-            <div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:44px;height:44px;box-sizing:border-box;border:10px solid #6A4BC4;border-radius:50%"></div></div>
-            <div style="position:relative;overflow:hidden;transform:{{ shH }};transition:transform var(--dur-slow) var(--ease-out)"><div style="position:absolute;left:0;top:32px;width:64px;height:64px;border-radius:50%;background:#6B7A70"></div></div>
-            <div style="border-radius:50%;background:#3C4A6B;transform:{{ shC }};transition:transform var(--dur-slow) var(--ease-out)"></div>
+            <div style="border-radius:100% 0 0 0;background:#9B84DB;transform:{{ shQ }};transition:transform var(--dur-slow) var(--ease-out)"></div>
+            <div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:28px;height:28px;box-sizing:border-box;border:6px solid #6A4BC4;border-radius:50%"></div></div>
+            <div style="position:relative;overflow:hidden;transform:{{ shH }};transition:transform var(--dur-slow) var(--ease-out)"><div style="position:absolute;left:0;top:20px;width:40px;height:40px;border-radius:50%;background:#9B84DB"></div></div>
+            <div style="border-radius:50%;background:#9B84DB;transform:{{ shC }};transition:transform var(--dur-slow) var(--ease-out)"></div>
           </div></sc-if>
         </div>
       </section>
@@ -105,19 +106,19 @@
       <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;box-sizing:border-box;padding:0 var(--grid-margin)">
         <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--space-3) var(--grid-gutter);padding:var(--space-4) 0 var(--space-8);border-top:1px solid var(--border-strong)">
           <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">My Projects</span>
-          <p style="margin:0;max-width:44ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">Two case studies covering the full design process, from research and wireframes through to a shipped product.</p>
+          <p style="margin:0;max-width:44ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">Three case studies covering the full design process, from research and wireframes through to a shipped product.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:var(--space-13)">
           <sc-for list="{{ rows }}" as="p" hint-placeholder-count="2">
             <a href="#" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" data-reveal="" style="display:flex;flex-direction:column;gap:var(--space-6);color:var(--text-primary);text-decoration:none;cursor:pointer">
               <div style="position:relative;width:100%;aspect-ratio:16 / 9;background:{{ p.panel }};overflow:hidden">
-                <div style="position:absolute;left:6%;top:{{ p.mTop }};width:{{ p.mW }};height:{{ p.mHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden">
+                <div style="position:absolute;left:6%;top:{{ p.mTop }};width:{{ p.mW }};height:{{ p.mHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden;transform:{{ p.tiltA }};transform-origin:30% 70%;transition:transform 900ms cubic-bezier(.22,.61,.36,1)">
                   <div style="flex:none;height:22px;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid rgba(255,255,255,0.08)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span></div>
-                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.mAR }};overflow:hidden"><image-slot id="{{ p.slug }}-mockMain" src="{{ p.mockMain }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%;transform:{{ p.zoom }};transition:transform var(--dur-slow) var(--ease-out)"></image-slot></div>
+                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.mAR }};overflow:hidden"><image-slot id="{{ p.slug }}-mockMain" src="{{ p.mockMain }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
                 </div>
-                <div style="position:absolute;right:5%;top:{{ p.sTop }};bottom:{{ p.sBottom }};width:{{ p.sW }};height:{{ p.sHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden">
+                <div style="position:absolute;right:5%;top:{{ p.sTop }};bottom:{{ p.sBottom }};width:{{ p.sW }};height:{{ p.sHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden;transform:{{ p.tiltB }};transform-origin:70% 70%;transition:transform 900ms cubic-bezier(.22,.61,.36,1)">
                   <div style="flex:none;height:22px;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid rgba(255,255,255,0.08)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span></div>
-                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.sAR }};overflow:hidden"><image-slot id="{{ p.slug }}-mockSecond" src="{{ p.mockSecond }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%;transform:{{ p.zoom }};transition:transform var(--dur-slow) var(--ease-out)"></image-slot></div>
+                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.sAR }};overflow:hidden"><image-slot id="{{ p.slug }}-mockSecond" src="{{ p.mockSecond }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
                 </div>
               </div>
               <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-3) var(--grid-gutter)">
@@ -143,10 +144,10 @@
             </div>
           </div>
           <div style="flex:3 1 520px;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-6)">
-            <p style="margin:0;max-width:34em;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">UX/UI designer who believes good design should be simple and effortless. Currently working at Turm &amp; Leufer in Berlin, where I've built design systems and product interfaces from the ground up that focus on making complex tools feel simple and intuitive from the first click.</p>
+            <p style="margin:0;max-width:34em;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">UX/UI designer who believes good design should be simple and effortless. Currently working at Turm &amp; Leufer in Berlin, where I've built design systems and product interfaces from the ground up that focus on making complex tools feel simple and intuitive from the first click. I work across the whole process, from research to a working prototype, and use AI to get there faster.</p>
             <div style="display:flex;flex-wrap:wrap;gap:var(--space-6);align-items:center">
-              <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="→" onClick="{{ goAbout }}" hint-size="120px,24px">Learn More</x-import>
-              <a href="assets/Federico-Stefan-CV.pdf" onClick="{{ downloadCv }}" style="font-size:var(--type-small);color:var(--text-primary);text-decoration:underline;text-underline-offset:4px" style-hover="color:var(--accent)">Download CV ↓</a>
+              <span data-tap=""><x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="→" onClick="{{ goAbout }}" hint-size="120px,24px">Learn More</x-import></span>
+              <a href="assets/Federico-Stefan-CV.pdf" data-tap="" onClick="{{ downloadCv }}" style="font-size:var(--type-small);color:var(--text-primary);text-decoration:underline;text-underline-offset:4px" style-hover="color:var(--accent)">Download CV ↓</a>
             </div>
           </div>
         </div>
@@ -158,7 +159,7 @@
       <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-11) var(--grid-margin) var(--section-gap);box-sizing:border-box">
         <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:var(--space-6) var(--grid-gutter);padding-bottom:var(--space-11)">
           <h1 data-reveal="" style="margin:0;font-size:var(--type-display-xl);line-height:var(--lh-display-xl);letter-spacing:var(--tracking-display);font-weight:500">Projects</h1>
-          <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="display:flex;gap:var(--space-3)"><div data-anim="spin" style="width:56px;height:56px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div><div data-anim="morph" style="width:56px;height:56px;border-radius:50%;background:#6A4BC4"></div></div></sc-if>
+          <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="display:flex;gap:var(--space-3)"><div data-anim="spin" style="width:32px;height:32px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div><div data-anim="morph" style="width:32px;height:32px;border-radius:50%;background:#6A4BC4"></div></div></sc-if>
           <p data-reveal="" style="margin:0;max-width:24ch;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);text-wrap:pretty">Good design shouldn't need an explanation. Every project here starts with that idea.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));align-items:start;gap:var(--space-11) var(--grid-gutter)">
@@ -166,16 +167,16 @@
             <div data-reveal="" style="min-width:0;display:flex;flex-direction:column;gap:var(--space-5);margin-top:{{ p.stagger }}">
               <div style="position:relative">
                 <div style="position:relative;width:100%;aspect-ratio:16 / 9;background:{{ p.panel }};overflow:hidden">
-                <div style="position:absolute;left:6%;top:{{ p.mTop }};width:{{ p.mW }};height:{{ p.mHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden">
+                <div style="position:absolute;left:6%;top:{{ p.mTop }};width:{{ p.mW }};height:{{ p.mHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden;transform:{{ p.tiltA }};transform-origin:30% 70%;transition:transform 900ms cubic-bezier(.22,.61,.36,1)">
                   <div style="flex:none;height:22px;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid rgba(255,255,255,0.08)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span></div>
-                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.mAR }};overflow:hidden"><image-slot id="{{ p.slug }}-proj-mockMain" src="{{ p.mockMain }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%;transform:{{ p.zoom }};transition:transform var(--dur-slow) var(--ease-out)"></image-slot></div>
+                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.mAR }};overflow:hidden"><image-slot id="{{ p.slug }}-proj-mockMain" src="{{ p.mockMain }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
                 </div>
-                <div style="position:absolute;right:5%;top:{{ p.sTop }};bottom:{{ p.sBottom }};width:{{ p.sW }};height:{{ p.sHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden">
+                <div style="position:absolute;right:5%;top:{{ p.sTop }};bottom:{{ p.sBottom }};width:{{ p.sW }};height:{{ p.sHt }};display:flex;flex-direction:column;background:#141414;border:1px solid rgba(255,255,255,0.14);overflow:hidden;transform:{{ p.tiltB }};transform-origin:70% 70%;transition:transform 900ms cubic-bezier(.22,.61,.36,1)">
                   <div style="flex:none;height:22px;display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid rgba(255,255,255,0.08)"><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.28)"></span></div>
-                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.sAR }};overflow:hidden"><image-slot id="{{ p.slug }}-proj-mockSecond" src="{{ p.mockSecond }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%;transform:{{ p.zoom }};transition:transform var(--dur-slow) var(--ease-out)"></image-slot></div>
+                  <div style="position:relative;flex:{{ p.imgFlex }};aspect-ratio:{{ p.sAR }};overflow:hidden"><image-slot id="{{ p.slug }}-proj-mockSecond" src="{{ p.mockSecond }}" shape="rect" fit="cover" style="position:absolute;inset:0;width:100%;height:100%"></image-slot></div>
                 </div>
               </div>
-                <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="position:absolute;top:-28px;right:-28px;width:56px;height:56px;border-radius:{{ p.shapeRadius }};background:{{ p.accent }};pointer-events:none;transform:{{ p.markRot }};transition:transform var(--dur-slow) var(--ease-out)"></div></sc-if>
+                <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="position:absolute;top:-28px;right:-28px;width:56px;height:56px;border-radius:50%;background:{{ p.panel }};pointer-events:none;transform:{{ p.markRot }};transition:transform var(--dur-slow) var(--ease-out)"></div></sc-if>
               </div>
               <a href="#" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="display:flex;flex-direction:column;gap:var(--space-3);color:var(--text-primary)">
                 <div style="display:flex;align-items:baseline;gap:var(--space-5)">
@@ -200,7 +201,7 @@
 
             <div style="order:{{ p.o.intro }};flex:none;width:min(52vw,760px);height:100%;display:flex;flex-direction:column;justify-content:space-between">
               <div style="display:flex;justify-content:space-between;align-items:center">
-                <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="←" size="small" muted="{{ true }}" onClick="{{ goProjects }}" hint-size="90px,20px">Projects</x-import>
+                <span data-tap=""><x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="←" size="small" muted="{{ true }}" onClick="{{ goProjects }}" hint-size="90px,20px">Projects</x-import></span>
                 <span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-secondary)">{{ p.counter }}</span>
               </div>
               <div style="display:flex;flex-direction:column;gap:var(--space-8)">
@@ -222,10 +223,7 @@
               <p style="margin:0;font-size:clamp(15px,min(1.7vw,2.9vh),26px);line-height:1.4;letter-spacing:var(--tracking-heading);text-wrap:pretty">{{ p.overview }}</p>
             </div>
 
-            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="order:{{ p.o.sh1 }};flex:none;height:100%;aspect-ratio:1 / 2;display:grid;grid-template-rows:1fr 1fr">
-              <div data-anim="morph" style="border-radius:50%;background:{{ p.accent }}"></div>
-              <div style="position:relative;overflow:hidden"><div data-anim="breathe" style="position:absolute;left:0;top:50%;width:100%;aspect-ratio:1;border-radius:50%;background:#C3B1E8"></div></div>
-            </div></sc-if>
+            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="order:{{ p.o.sh1 }};flex:none;align-self:flex-end;height:34%;aspect-ratio:1 / 2;display:grid;grid-template-rows:1fr 1fr;gap:12px"><sc-for list="{{ p.shA }}" as="c" hint-placeholder-count="4"><div style="display:flex;align-items:center;justify-content:center;min-width:0;min-height:0"><div data-anim="{{ c.anim }}" style="width:{{ c.w }};aspect-ratio:{{ c.ar }};box-sizing:border-box;background:{{ c.bg }};border-radius:{{ c.r }};clip-path:{{ c.clip }};border:{{ c.b }};transform:{{ c.rot }}"></div></div></sc-for></div></sc-if>
             <div style="order:{{ p.o.obj }};flex:none;width:min(64vw,880px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:min(24px,2.5vh)">
               <h2 style="margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Objectives</h2>
               <ol style="margin:0;padding:0;list-style:none;border-bottom:1px solid var(--border-default)">
@@ -293,8 +291,29 @@
             <div style="order:{{ p.o.chg }};flex:none;display:flex;gap:var(--space-11);height:calc(100% + min(48px,5vh) + min(64px,7vh));margin:calc(-1 * min(48px,5vh)) 0 calc(-1 * min(64px,7vh));padding:min(48px,5vh) var(--space-10) min(64px,7vh);box-sizing:border-box;background:{{ changedBg }};color:{{ changedInk }}">
               <div style="flex:none;width:min(60vw,760px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
                 <h2 style="margin:0;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500">What Changed</h2>
+                <sc-if value="{{ p.hasLater }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+                    <span style="display:flex;align-items:center;gap:var(--space-3);font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}"><span style="width:8px;height:8px;border-radius:50%;background:{{ p.accent }}"></span>03 The solution →</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)">
+                      <sc-for list="{{ p.laterList }}" as="s" hint-placeholder-count="4">
+                        <span style="display:flex;align-items:center;gap:var(--space-2);padding:6px 12px;border:1px solid {{ changedRule }};border-radius:999px;font-size:var(--type-small);color:{{ changedInk }}"><span style="font-family:var(--font-mono);color:{{ p.accent }}">{{ s.num }}</span>{{ s.t }}</span>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-if>
                 <p style="margin:0;font-size:var(--type-body);line-height:var(--lh-body);color:{{ changedMuted }};text-wrap:pretty">{{ p.changedIntro }}</p>
               </div>
+              <sc-if value="{{ p.hasProbList }}" hint-placeholder-val="{{ false }}">
+                <div style="flex:none;width:min(80vw,1040px);height:100%;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid {{ changedRule }}">
+                  <sc-for list="{{ p.probList }}" as="s" hint-placeholder-count="5">
+                    <div style="display:grid;grid-template-columns:96px minmax(0,1fr) minmax(0,1.3fr);align-items:baseline;gap:var(--space-6);padding:var(--space-5) 0;border-top:1px solid {{ changedRule }}">
+                      <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">{{ s.n }}</span>
+                      <h3 style="margin:0;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
+                      <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.dA }}</p>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
               <sc-for list="{{ p.probN }}" as="s" hint-placeholder-count="4">
                 <sc-if value="{{ s.notPair }}" hint-placeholder-val="{{ true }}">
                 <div style="flex:none;height:100%;display:flex;flex-direction:{{ s.dir }};align-items:flex-end;gap:var(--space-6)">
@@ -337,11 +356,7 @@
               </sc-for>
             </div>
 
-            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="order:{{ p.o.sh2 }};flex:none;height:100%;aspect-ratio:2 / 3;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr)">
-              <div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%)"></div><div></div>
-              <div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:60%;aspect-ratio:1;box-sizing:border-box;border:clamp(8px,2vh,18px) solid #6A4BC4;border-radius:50%"></div></div><div style="border-radius:0 100% 0 0;background:{{ p.accent }}"></div>
-              <div style="border-radius:50%;background:#6B7A70"></div><div style="border-radius:100% 0 0 0;background:#6A4BC4"></div>
-            </div></sc-if>
+            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="order:{{ p.o.sh2 }};flex:none;align-self:flex-end;height:36%;aspect-ratio:2 / 3;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:12px"><sc-for list="{{ p.shB }}" as="c" hint-placeholder-count="4"><div style="display:flex;align-items:center;justify-content:center;min-width:0;min-height:0"><div data-anim="{{ c.anim }}" style="width:{{ c.w }};aspect-ratio:{{ c.ar }};box-sizing:border-box;background:{{ c.bg }};border-radius:{{ c.r }};clip-path:{{ c.clip }};border:{{ c.b }};transform:{{ c.rot }}"></div></div></sc-for></div></sc-if>
             <div style="order:{{ p.o.proc }};flex:none;width:min(90vw,1180px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
               <div style="display:flex;gap:var(--space-9);align-items:flex-start">
                 <h2 style="flex:0 0 auto;margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Creative Process</h2>
@@ -388,7 +403,7 @@
                     <h3 style="margin:0;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
                     <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ s.dB }}</p>
                   </div>
-                  <div style="flex:none;height:100%;aspect-ratio:{{ s.ratio }};position:relative;background:var(--image-placeholder)">
+                  <div style="flex:none;height:{{ s.solH }};aspect-ratio:{{ s.ratio }};position:relative">
                     <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}-sol" src="{{ s.src }}" shape="rect" placeholder="Redesign"></image-slot>
                   </div>
                 </div>
@@ -411,7 +426,7 @@
       <article style="display:flex;flex-direction:column">
         <section style="order:{{ p.o.hdr }};width:100%;max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-9) var(--grid-margin) var(--space-10);box-sizing:border-box">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-12)">
-            <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="←" size="small" muted="{{ true }}" onClick="{{ goProjects }}" hint-size="90px,20px">Projects</x-import>
+            <span data-tap=""><x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="←" size="small" muted="{{ true }}" onClick="{{ goProjects }}" hint-size="90px,20px">Projects</x-import></span>
             <span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-secondary)">{{ p.counter }}</span>
           </div>
           <h1 data-reveal="" style="margin:0 0 var(--space-9);font-size:var(--type-display-xl);line-height:var(--lh-display-xl);letter-spacing:var(--tracking-display);font-weight:500">{{ p.title }}</h1>
@@ -579,7 +594,7 @@
             <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-closing-v" src="{{ p.closingSrc }}" shape="rect" placeholder="Closing image"></image-slot>
           </div></sc-if>
           <div style="margin-top:var(--section-gap)">
-            <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.NextProject" title="{{ p.nextTitle }}" number="{{ p.nextCounter }}" onClick="{{ p.openNext }}" hint-size="100%,220px"></x-import>
+            <div style="--type-display-xl:clamp(44px,8vw,144px)"><x-import component-from-global-scope="FedericoStefanDesignSystem_704060.NextProject" title="{{ p.nextTitle }}" number="{{ p.nextCounter }}" onClick="{{ p.openNext }}" hint-size="100%,220px"></x-import></div>
           </div>
         </section>
         <sc-for list="{{ p.chapters }}" as="c" hint-placeholder-count="0">
@@ -612,7 +627,7 @@
     <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
       <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-11) var(--grid-margin) 0;box-sizing:border-box">
         <span data-reveal="" style="display:block;margin-bottom:var(--space-6);font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">About</span>
-        <sc-if value="{{ showShapesWide }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="float:right;display:grid;grid-template-columns:repeat(3,80px);grid-template-rows:repeat(3,80px);margin:0 0 var(--space-6) var(--space-8)"><div data-anim="morph" style="border-radius:50%;background:#6A4BC4"></div><div></div><div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div><div style="position:relative;overflow:hidden"><div style="position:absolute;left:0;top:50%;width:100%;aspect-ratio:1;border-radius:50%;background:#3C4A6B"></div></div><div style="border-radius:100% 0 0 0;background:#C3B1E8"></div><div></div><div></div><div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:62%;aspect-ratio:1;box-sizing:border-box;border:max(6px,14%) solid #6A4BC4;border-radius:50%"></div></div><div data-anim="breathe" style="border-radius:999px 999px 0 0;background:#6B7A70;transform-origin:bottom"></div></div></sc-if>
+        <sc-if value="{{ showShapesWide }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="float:right;display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(3,48px);gap:8px;margin:0 0 var(--space-6) var(--space-8)"><div data-anim="morph" style="border-radius:50%;background:#6A4BC4"></div><div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div><div style="display:flex;align-items:center;justify-content:center"><div style="width:70%;height:70%;background:#9B84DB;transform:rotate(45deg)"></div></div><div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:72%;aspect-ratio:1;box-sizing:border-box;border:8px solid #6A4BC4;border-radius:50%"></div></div><div data-anim="spin" style="background:#9B84DB;clip-path:polygon(50% 0,59% 29%,85% 15%,71% 41%,100% 50%,71% 59%,85% 85%,59% 71%,50% 100%,41% 71%,15% 85%,29% 59%,0 50%,29% 41%,15% 15%,41% 29%)"></div><div style="display:flex;align-items:center;justify-content:center"><div data-anim="breathe" style="width:100%;height:50%;border-radius:999px;background:#C3B1E8"></div></div><div style="background:#C3B1E8;clip-path:polygon(50% 6%, 96% 90%, 4% 90%)"></div><div data-anim="spin" style="background:#6A4BC4;clip-path:polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%)"></div><div style="display:flex;align-items:center;justify-content:center"><div style="width:62%;height:62%;border-radius:50%;background:#9B84DB"></div></div></div></sc-if>
         <h1 data-reveal="" style="margin:0;max-width:18ch;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500;text-wrap:balance">I design digital experiences that strengthen your brand identity, simplify how users interact with your product and deliver results that matter.</h1>
       </section>
 
@@ -620,14 +635,14 @@
         <div style="display:flex;flex-wrap:wrap;gap:var(--space-8) var(--grid-gutter);align-items:flex-start">
           <div data-reveal="" style="flex:1 1 280px;max-width:420px;position:relative;aspect-ratio:4 / 5;background:var(--image-placeholder)">
             <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="about-portrait" src="assets/photos/portrait.jpg" shape="rect" placeholder="Portrait"></image-slot>
-            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-anim="spin" style="position:absolute;right:-36px;bottom:-36px;width:72px;height:72px;background:#6A4BC4;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);pointer-events:none"></div><div aria-hidden="true" style="position:absolute;left:-28px;top:-28px;width:56px;height:56px;border-radius:50%;background:#C3B1E8;pointer-events:none" data-anim="breathe"></div></sc-if>
+            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-anim="spin" style="position:absolute;right:-24px;bottom:-24px;width:48px;height:48px;background:#6A4BC4;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);pointer-events:none"></div><div aria-hidden="true" style="position:absolute;left:-16px;top:-16px;width:32px;height:32px;border-radius:50%;background:#C3B1E8;pointer-events:none" data-anim="breathe"></div></sc-if>
           </div>
           <div data-reveal="" style="flex:2 1 460px;display:flex;flex-direction:column;gap:var(--space-5);padding-top:var(--space-13)">
             <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">About me</span>
-            <p style="margin:0;max-width:32em;font-size:var(--type-h3);line-height:1.4;letter-spacing:var(--tracking-heading);text-wrap:pretty">As a UX/UI designer, I work to find the clarity that meets purpose by creating interfaces that feel intuitive from the first interaction. My work starts with understanding the problem and ends with a design that's ready to build impact.</p>
+            <p style="margin:0;max-width:32em;font-size:var(--type-h3);line-height:1.4;letter-spacing:var(--tracking-heading);text-wrap:pretty">As a UX/UI designer, I work to find the clarity that meets purpose by creating interfaces that feel intuitive from the first interaction. My work starts with understanding the problem and ends with a design that's ready to build impact. I work as an all-rounder across the whole process, from brand identity and design systems to product UI and Webflow implementation. I use AI to work faster at every stage: to research and summarise information, to build working prototypes across different platforms, and to test ideas early. I review every result it gives me before it goes into a design.</p>
             <div style="display:flex;flex-wrap:wrap;gap:var(--space-5);align-items:center;padding-top:var(--space-4)">
               <a href="assets/Federico-Stefan-CV.pdf" download="Federico-Stefan-CV.pdf" onClick="{{ downloadCv }}" style="display:inline-flex;align-items:center;gap:var(--space-2);height:44px;padding:0 var(--space-5);background:var(--text-primary);color:var(--bg-page);text-decoration:none;font-size:var(--type-small);font-weight:500;transition:background var(--duration-base) var(--ease-out)" style-hover="background:var(--accent)">Download CV <span>↓</span></a>
-              <a href="assets/Federico-Stefan-CV.pdf" target="_blank" rel="noopener" onClick="{{ openCv }}" style="font-size:var(--type-small);color:var(--text-primary);text-decoration:underline;text-underline-offset:4px" style-hover="color:var(--accent)">Open in browser ↗</a>
+              <a href="assets/Federico-Stefan-CV.pdf" data-tap="" target="_blank" rel="noopener" onClick="{{ openCv }}" style="font-size:var(--type-small);color:var(--text-primary);text-decoration:underline;text-underline-offset:4px" style-hover="color:var(--accent)">Open in browser ↗</a>
             </div>
 
           </div>
@@ -652,7 +667,7 @@
             <div data-reveal="" style="display:flex;flex-direction:column;gap:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--border-strong)">
               <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-5)">
                 <span style="font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);color:var(--text-muted);font-weight:400">{{ s.n }}</span>
-                <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-anim="{{ s.anim }}" style="width:40px;height:40px;flex:none;box-sizing:border-box;border-radius:{{ s.radius }};background:{{ s.color }};border:{{ s.border }};clip-path:{{ s.clip }}"></div></sc-if>
+                <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-anim="{{ s.anim }}" style="width:28px;height:28px;flex:none;box-sizing:border-box;border-radius:{{ s.radius }};background:{{ s.color }};border:{{ s.border }};clip-path:{{ s.clip }}"></div></sc-if>
               </div>
               <span style="max-width:30ch;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);text-wrap:pretty">{{ s.t }}</span>
             </div>
@@ -663,8 +678,8 @@
       
       <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin);box-sizing:border-box">
         <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:var(--space-5) var(--grid-gutter);margin-bottom:var(--space-9)">
-          <div style="display:flex;align-items:center;gap:var(--space-5)"><h2 style="margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Experience</h2><sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;gap:6px"><div data-anim="morph" style="width:36px;height:36px;border-radius:50%;background:#6A4BC4"></div><div style="width:36px;height:36px;border-radius:0 100% 0 0;background:#3C4A6B"></div><div data-anim="spin" style="width:36px;height:36px;background:#C3B1E8;clip-path:polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%)"></div></div></sc-if></div>
-          <p style="margin:0;max-width:44ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">Currently working at Turm &amp; Leufer in Berlin, with experience across brand identity, product design, and Webflow implementation.</p>
+          <div style="display:flex;align-items:center;gap:var(--space-5)"><h2 style="margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Experience</h2><sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;gap:6px"><div data-anim="morph" style="width:20px;height:20px;border-radius:50%;background:#6A4BC4"></div><div style="width:20px;height:20px;border-radius:0 100% 0 0;background:#9B84DB"></div><div data-anim="spin" style="width:20px;height:20px;background:#C3B1E8;clip-path:polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%)"></div></div></sc-if></div>
+          <p style="margin:0;max-width:44ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">Currently working at Turm &amp; Leufer in Berlin, with experience across brand identity, product design, AI products and Webflow implementation.</p>
         </div>
         <span style="display:block;padding-bottom:var(--space-3);font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Experience</span>
         <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:var(--space-4) var(--grid-gutter);padding:var(--space-6) 0 var(--space-8);border-top:1px solid var(--border-strong)">
@@ -687,12 +702,12 @@
       <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;box-sizing:border-box;padding:0 var(--grid-margin) var(--section-gap)">
         <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--space-3) var(--grid-gutter);padding:var(--space-4) 0 var(--space-8);border-top:1px solid var(--border-strong)">
           <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">My Projects</span>
-          <p style="margin:0;max-width:44ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">Two case studies covering the full design process, from research and wireframes through to a shipped product.</p>
+          <p style="margin:0;max-width:44ch;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">Three case studies covering the full design process, from research and wireframes through to a shipped product.</p>
         </div>
         <div onMouseMove="{{ onMove }}" style="border-bottom:1px solid var(--border-default)">
           <sc-for list="{{ rows }}" as="p" hint-placeholder-count="2">
-            <a href="#" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" data-reveal="" style="display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-4) var(--grid-gutter);padding:var(--space-8) 0 var(--space-9);border-top:1px solid var(--border-default);color:var(--text-primary);cursor:pointer">
-              <span style="flex:0 0 64px;display:flex;align-items:center;gap:var(--space-3);font-family:var(--font-mono);font-size:var(--type-small);color:{{ p.metaColor }};transition:color var(--dur-base) var(--ease-out)">{{ p.num }}<sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="width:12px;height:12px;border-radius:{{ p.shapeRadius }};background:{{ p.accent }};transform:{{ p.markRot }};transition:transform var(--dur-slow) var(--ease-out)"></span></sc-if></span>
+            <a href="#" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" data-reveal="" style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4) var(--grid-gutter);padding:var(--space-8) 0;border-top:1px solid var(--border-default);color:var(--text-primary);cursor:pointer">
+              <span style="flex:0 0 64px;display:flex;align-items:center;gap:var(--space-3);font-family:var(--font-mono);font-size:var(--type-small);color:{{ p.metaColor }};transition:color var(--dur-base) var(--ease-out)">{{ p.num }}<sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="width:12px;height:12px;border-radius:50%;background:{{ p.accent }};transform:{{ p.markRot }};transition:transform var(--dur-slow) var(--ease-out)"></span></sc-if></span>
               <span style="flex:1 1 360px;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500;transform:{{ p.shift }};transition:transform var(--dur-base) var(--ease-out)">{{ p.title }}</span>
               <span style="flex:0 1 340px;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.short }}</span>
               <span style="flex:0 0 auto;display:flex;gap:var(--space-2);font-size:var(--type-small);color:{{ p.metaColor }};transition:color var(--dur-base) var(--ease-out)">
@@ -712,15 +727,15 @@
           <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:var(--space-8)">
             <h1 data-reveal="" style="margin:0;font-size:var(--type-display-xl);line-height:var(--lh-display-xl);letter-spacing:var(--tracking-display);font-weight:500">Contact</h1>
             <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="display:flex">
-              <div data-anim="morph" style="width:80px;height:80px;border-radius:50%;background:#6A4BC4"></div>
-              <div style="width:80px;height:80px;border-radius:100% 0 0 0;background:#6B7A70"></div>
-              <div data-anim="spin" style="width:80px;height:80px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div>
-              <div style="width:80px;height:80px;border-radius:0 0 100% 0;background:#3C4A6B"></div>
+              <div data-anim="morph" style="width:44px;height:44px;border-radius:50%;background:#6A4BC4"></div>
+              <div style="width:44px;height:44px;border-radius:100% 0 0 0;background:#9B84DB"></div>
+              <div data-anim="spin" style="width:44px;height:44px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div>
+              <div style="width:44px;height:44px;border-radius:0 0 100% 0;background:#9B84DB"></div>
             </div></sc-if>
             <p data-reveal="" style="margin:0;max-width:20ch;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);text-wrap:pretty">Have a project in mind or want to talk? I'd love to hear from you.</p>
           </div>
           <div data-reveal="" style="flex:1 1 420px;max-width:600px;display:flex;flex-direction:column;gap:var(--space-8);padding-top:var(--space-4);border-top:1px solid var(--border-strong)">
-            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Send me a message</span><sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;gap:4px"><span style="width:14px;height:14px;border-radius:50%;background:#6A4BC4"></span><span data-anim="spin" style="width:14px;height:14px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></span><span style="width:14px;height:14px;border-radius:100% 0 0 0;background:#3C4A6B"></span></div></sc-if></div>
+            <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Send me a message</span><sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;gap:4px"><span style="width:14px;height:14px;border-radius:50%;background:#6A4BC4"></span><span data-anim="spin" style="width:14px;height:14px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></span><span style="width:14px;height:14px;border-radius:100% 0 0 0;background:#9B84DB"></span></div></sc-if></div>
             <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
               <div style="display:flex;flex-direction:column;gap:var(--space-7)">
                 <div style="display:flex;flex-wrap:wrap;gap:var(--space-7) var(--grid-gutter)">
@@ -760,7 +775,7 @@
         </nav>
       </div>
       <div style="align-self:flex-end;display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-4)">
-        <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;gap:6px"><span style="width:12px;height:12px;border-radius:50%;background:#6A4BC4"></span><span data-anim="spin" style="width:12px;height:12px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></span><span style="width:12px;height:12px;border-radius:100% 0 0 0;background:#6B7A70"></span><span style="width:12px;height:12px;border-radius:50%;background:#3C4A6B"></span></div></sc-if>
+        <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="display:flex;gap:6px"><span style="width:12px;height:12px;border-radius:50%;background:#6A4BC4"></span><span data-anim="spin" style="width:12px;height:12px;background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></span><span style="width:12px;height:12px;border-radius:100% 0 0 0;background:#9B84DB"></span><span style="width:12px;height:12px;border-radius:50%;background:#9B84DB"></span></div></sc-if>
       <span style="font-size:var(--type-small);color:var(--text-secondary)">© Copyright 2026 | Designed by Federico Stefan</span>
       </div>
     </div>
@@ -781,7 +796,7 @@
       <div style="flex:none;display:flex;justify-content:space-between;align-items:center;gap:var(--space-5);padding:var(--space-5) var(--grid-margin, 64px);border-bottom:1px solid var(--border-default)">
         <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Federico Stefan · CV</span>
         <div style="display:flex;gap:var(--space-6);align-items:center">
-          <a href="assets/Federico-Stefan-CV.pdf" onClick="{{ downloadCv }}" style="font-size:var(--type-small);color:var(--text-primary);text-decoration:underline;text-underline-offset:4px" style-hover="color:var(--accent)">Download ↓</a>
+          <a href="assets/Federico-Stefan-CV.pdf" data-tap="" onClick="{{ downloadCv }}" style="font-size:var(--type-small);color:var(--text-primary);text-decoration:underline;text-underline-offset:4px" style-hover="color:var(--accent)">Download ↓</a>
           <button type="button" onClick="{{ closeCv }}" style="background:none;border:0;padding:0;cursor:pointer;font:inherit;font-size:var(--type-small);color:var(--text-primary)" style-hover="color:var(--accent)">Close ✕</button>
         </div>
       </div>
@@ -844,7 +859,7 @@ const PROJECTS = [
       'Going through Anmeldung myself without speaking German, and noting every point where I got stuck or was unsure what applied to me.',
       'Having conversations with people who had moved to Berlin, including students, colleagues, friends and strangers. I asked how moving into the city went, whether the city helped them, and how they found German bureaucracy. Without being asked, several said they had no idea which district they lived in. Some international students also told me the bureaucracy was part of why they were thinking of going home after their studies.',
       'Researching the official service pages, with help from AI, to write plain-language information for the most used services: the German name, where to go, the fees and whether it can be done online.',
-      "Writing a spec and building the prototype in Claude Design, then reviewing and correcting every screen. My main additions were a search that works as an assistant, building on the city's existing 115 chatbot, an address search for the nearest Bürgeramt, and an office list that shows details only when you open them. The AI answers in the prototype are scripted to show how the feature should behave.",
+      "Writing a spec and building the prototype with AI, then reviewing and correcting every screen. My main additions were a search that works as an assistant, building on the city's existing 115 chatbot, an address search for the nearest Bürgeramt, and an office list that shows details only when you open them. The AI answers in the prototype are scripted to show how the feature should behave.",
       'Adding accessibility controls from the start, such as text size, contrast, link underlining and reduced motion, because a government site has to work for people of every age and background. I also included the accessibility statement that Berlin law requires for public websites. I tested the whole booking flow using only a keyboard, at 200% zoom and at phone width, and it passed all three checks. Screen reader testing is still open, and the statement says so.'
     ],
     conclusion1: 'The visual direction was set by what already exists. Berlin\'s red, navy and header stay as they are, because people should recognise an official service they can trust. Red is only used as a marker, never for body text, and every status is written as a word, so the site still works without colour.',
@@ -891,12 +906,12 @@ const PROJECTS = [
     conclusion2: 'The hardest part of the project was not designing individual screens but making the full flow feel connected. Nordstern does a lot behind the scenes, and the job of the design was to make sure users always knew where they were, what had been done, and what came next. Getting that clarity right across onboarding, the dashboard overview, and the content calendar is what the design work was really about.'
   },
   {
-    slug: 'collab', title: 'Collab.', accent: '#6A4BC4',
-    panel: '#C3B1E8', mockMain: 'assets/collab/web/dashboard.png', mockSecond: 'assets/collab/web/project-view.png',
+    slug: 'collab', title: 'Collab.', accent: '#E86838',
+    panel: '#E86838', mockMain: 'assets/collab/web/dashboard.png', mockSecond: 'assets/collab/web/project-view.png',
     coverSrc: 'assets/collab/web/dashboard.png', heroSrc: 'assets/collab/web/logo-dark.png',
     media: {
       fig1: ['assets/collab/web/design-system.png', '2750 / 1000'], fig2: ['assets/collab/web/project-view.png', '1040 / 1000'], fig3: ['assets/collab/web/new-project-1.png', '1179 / 1000'],
-      screens: [['assets/collab/screen-1-basics.png', '1958 / 986'], ['assets/collab/screen-2-roles.png', '1492 / 986'], ['assets/collab/screen-3-timeline.png', '2264 / 872'], ['assets/collab/screen-4-preview.png', '2356 / 988']],
+      screens: [['assets/collab/clean/screen-1-basics.webp', '1952 / 986'], ['assets/collab/clean/screen-2-roles.webp', '1488 / 985'], ['assets/collab/clean/screen-3-timeline.webp', '2254 / 869'], ['assets/collab/clean/screen-4-preview.webp', '2353 / 987']],
       extras: [['assets/collab/web/new-project-2.png', '2000 / 2580', 'Define roles & timeline'], ['assets/collab/web/onboarding-2.png', '2000 / 2202', 'Build your profile'], ['assets/collab/web/dashboard.png', '2000 / 2320', 'Dashboard']]
     },
     short: 'Web platform designed to connect project owners with the right collaborators, built around simplicity and ease of use.',
@@ -937,7 +952,7 @@ const STEPS = [
   'Identifying what the problem is before touching any design tool.',
   'Defining the right language that gives the product its identity and consistency.',
   'Exploring user needs, mapping journeys and finding patterns that inform decisions.',
-  'Translating research into interfaces. From early wireframes to high fidelity screens.',
+  'Translating research into interfaces. From early wireframes to high fidelity screens, using AI to turn ideas into working prototypes quickly.',
   'Comparing versions, identifying friction points and refining until the experience feels right.'
 ];
 
@@ -957,6 +972,33 @@ const STORY = {
     'Critiques of the first version showed that the friction came from small decisions, not missing features.',
     'Version B changes those details across four screens of the project creation flow.'
   ]
+};
+const SH = (bg, o = {}) => ({ bg, w: o.w || '86%', ar: o.ar || '1', r: o.r || '0', clip: o.clip || 'none', b: o.b || 'none', rot: o.rot || 'none', anim: o.anim || '' });
+const PLUS = 'polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%)';
+const ST4 = 'polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)';
+const ST8 = 'polygon(50% 0,59% 29%,85% 15%,71% 41%,100% 50%,71% 59%,85% 85%,59% 71%,50% 100%,41% 71%,15% 85%,29% 59%,0 50%,29% 41%,15% 15%,41% 29%)';
+const TRI = 'polygon(50% 6%, 96% 90%, 4% 90%)';
+const GRID8 = (a, b, c) => [
+  SH(a, { r: '50%', anim: 'morph' }),
+  SH(b, { clip: ST4, w: '100%', anim: 'spin' }),
+  SH(c, { w: '64%', rot: 'rotate(45deg)' }),
+  SH('transparent', { r: '50%', w: '72%', b: 'clamp(6px,1vh,9px) solid ' + a, anim: 'float' }),
+  SH(b, { clip: ST8, w: '100%', anim: 'spin' }),
+  SH(c, { r: '999px', ar: '2', w: '100%', anim: 'breathe' }),
+];
+const PROJECT_SHAPES = {
+  anmeldung: {
+    shA: [SH('#C8102E', { r: '50%' }), SH('#002F6C', { w: '78%' })],
+    shB: GRID8('#C8102E', '#002F6C', '#E27A8A')
+  },
+  nordstern: {
+    shA: [SH('#3C4A6B', { clip: ST4, anim: 'spin' }), SH('#8E9AB8', { r: '50%', w: '46%', anim: 'float' })],
+    shB: GRID8('#3C4A6B', '#8E9AB8', '#C4CBDD')
+  },
+  collab: {
+    shA: [SH('#E86838', { r: '50%', anim: 'morph' }), SH('transparent', { r: '50%', w: '70%', b: 'clamp(8px,1.4vh,14px) solid #2A2A36', anim: 'float' })],
+    shB: GRID8('#E86838', '#2A2A36', '#F2A488')
+  }
 };
 const ORD_DEF = { intro: 1, hero: 2, ov: 3, sh1: 4, obj: 5, f1: 6, f2: 7, f3: 8, ex: 9, chg: 10, sh2: 11, proc: 12, concl: 13, close: 14, next: 20, after: 15, hdr: 1, vov: 3, vobj: 4, figs: 5, chgV: 6, vproc: 7, vconcl: 20 };
 const ORD_STORY = { intro: 1, hero: 2, ov: 4, proc: 5, sh1: 6, chg: 8, obj: 9, sh2: 10, f1: 12, f2: 13, f3: 14, ex: 15, after: 16, concl: 17, close: 18, next: 20, hdr: 1, vov: 4, vproc: 5, chgV: 8, vobj: 9, figs: 12, vconcl: 20 };
@@ -1150,7 +1192,7 @@ class Component extends DCLogic {
         enter: () => this.setState({ hov: i }), leave: () => this.setState({ hov: null }),
         shift: on ? 'translateX(var(--hover-shift))' : 'none',
         metaColor: on ? 'var(--accent)' : 'var(--text-secondary)',
-        arrowOp: on ? 1 : 0, pvOp: on ? 1 : 0, zoom: on ? 'scale(1.03)' : 'none', ...(() => {
+        arrowOp: on ? 1 : 0, pvOp: on ? 1 : 0, zoom: 'none', tiltA: on ? 'rotate(-1.2deg) translateY(-6px)' : 'none', tiltB: on ? 'rotate(1.6deg) translateY(-10px)' : 'none', ...(() => {
           if (!p.mockRatios) return { mW: '66%', mTop: '9%', mHt: '100%', sW: '34%', sTop: '30%', sBottom: 'auto', sHt: '62%', imgFlex: '1', mAR: 'auto', sAR: 'auto' };
           const rr = p.mockRatios.map(s => { const [a, b] = s.split('/').map(Number); return a / b; });
           const H = 56.25, bar = 2.2;
@@ -1158,7 +1200,7 @@ class Component extends DCLogic {
           const sW = Math.min(34, (0.60 * H - bar) * rr[1]);
           return { mHt: 'auto', sTop: 'auto', sHt: 'auto', imgFlex: 'none', mW: mW + '%', mTop: ((H - mH) / 2 / H * 100).toFixed(2) + '%', sW: sW + '%', sBottom: '9%', mAR: p.mockRatios ? p.mockRatios[0] : '16 / 10', sAR: p.mockRatios ? p.mockRatios[1] : '16 / 10' };
         })(), pvSrc: p.heroSrc || p.coverSrc || 'data:image/gif;base64,R0lGODlhAQABAAAAACw=',
-        shapeRadius: i === 0 ? '50%' : '0', markRot: on ? (i === 0 ? 'scale(1.4)' : 'rotate(45deg)') : 'none'
+        shapeRadius: i === 0 ? '50%' : '0', markRot: on ? 'scale(1.3)' : 'none'
       };
     });
     let p = null;
@@ -1187,8 +1229,13 @@ class Component extends DCLogic {
         openNext: nav(() => this.go(PROJECTS[nx].slug))
       };
     }
+    if (p) { p.laterList = p.story && !p.screensN.some(s => s.dA) ? p.screensN.map((s, i) => ({ num: String(i + 1).padStart(2, '0'), t: (s.t || '').replace(/:$/, '') })) : []; p.hasLater = false; }
+    if (p) { const ps = PROJECT_SHAPES[p.slug] || PROJECT_SHAPES.collab; p.shA = ps.shA; p.shB = ps.shB; }
+    if (p) p.solH = p.slug === 'nordstern' ? '60%' : '100%';
+    if (p) p.solFor = id => /anmeldung-screen3/.test(id) ? '72%' : p.solH;
     if (p) p.probN = !p.story ? p.screensN : p.screensN.some(s => s.dA) ? p.screensN : [];
-    if (p) p.afterN = p.story ? p.screensN.filter(s => s.afterSrc || s.src).map(s => ({ ...s, src: s.afterSrc || s.src, ratio: s.isPair ? s.afterRatio : s.ratio })) : [];
+    if (p) { const tx = p.story && !p.screensN.some(s => s.isPair) && p.probN.length > 0; p.probList = tx ? p.probN : []; p.hasProbList = tx; if (tx) p.probN = []; }
+    if (p) p.afterN = p.story ? p.screensN.filter(s => s.afterSrc || s.src).map(s => ({ ...s, src: s.afterSrc || s.src, ratio: s.isPair ? s.afterRatio : s.ratio, solH: p.solFor(s.id) })) : [];
     const activeNav = idx >= 0 ? 'Projects' : Object.keys(NAV).find(k => NAV[k] === s.page);
     return {
       navLinks: Object.keys(NAV), activeNav, tv,
@@ -1218,14 +1265,14 @@ class Component extends DCLogic {
         const d = [
           { color: '#6A4BC4', radius: '50%', anim: 'morph' },
           { color: '#C3B1E8', radius: '0', clip: sp, anim: 'spin' },
-          { color: '#6B7A70', radius: '100% 0 0 0', anim: 'wobble' },
+          { color: '#9B84DB', radius: '100% 0 0 0', anim: 'wobble' },
           { color: 'transparent', radius: '50%', border: '9px solid #6A4BC4', anim: 'float' },
-          { color: '#3C4A6B', radius: '0', clip: pl, anim: 'spin' },
+          { color: '#9B84DB', radius: '0', clip: pl, anim: 'spin' },
           { color: '#C3B1E8', radius: '20px 20px 0 0', anim: 'breathe' }
         ][i];
         return { n: pad(i + 1), t, border: 'none', clip: 'none', ...d };
       }),
-      showShapes: this.props.shapes ?? true,
+      showShapes: this.props.shapes ?? true, noShapes: false,
       shQ: s.hov === 0 ? 'rotate(90deg)' : s.hov === 1 ? 'rotate(180deg)' : 'none',
       shH: s.hov === 0 ? 'rotate(180deg)' : s.hov === 1 ? 'rotate(90deg)' : 'none',
       shC: s.hov === null ? 'scale(0.5)' : 'scale(1)',
