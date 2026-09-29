@@ -27,13 +27,23 @@
   </style>
 </helmet>
 
-<div style="min-height:100vh;display:flex;flex-direction:column;background:var(--bg-page);color:var(--text-primary);font-family:var(--font-sans);transition:background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);--bg-page:{{ tv.bgPage }};--bg-surface:{{ tv.bgSurface }};--bg-raised:{{ tv.bgRaised }};--bg-inverse:{{ tv.bgInverse }};--text-primary:{{ tv.textPrimary }};--text-secondary:{{ tv.textSecondary }};--text-muted:{{ tv.textMuted }};--text-inverse:{{ tv.textInverse }};--text-accent:{{ tv.accent }};--border-default:{{ tv.borderDefault }};--border-strong:{{ tv.borderStrong }};--accent:{{ tv.accent }};--accent-hover:{{ tv.accentHover }};--accent-subtle:{{ tv.accentSubtle }};--image-placeholder:{{ tv.bgSurface }};--focus-ring:{{ tv.accent }}">
-  <header style="position:sticky;top:0;z-index:10;background:color-mix(in srgb, var(--bg-page) 85%, transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
+<div style="min-height:100vh;display:flex;flex-direction:column;overflow-x:clip;background:var(--bg-page);color:var(--text-primary);font-family:var(--font-sans);transition:background-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);--bg-page:{{ tv.bgPage }};--bg-surface:{{ tv.bgSurface }};--bg-raised:{{ tv.bgRaised }};--bg-inverse:{{ tv.bgInverse }};--text-primary:{{ tv.textPrimary }};--text-secondary:{{ tv.textSecondary }};--text-muted:{{ tv.textMuted }};--text-inverse:{{ tv.textInverse }};--text-accent:{{ tv.accent }};--border-default:{{ tv.borderDefault }};--border-strong:{{ tv.borderStrong }};--accent:{{ tv.accent }};--accent-hover:{{ tv.accentHover }};--accent-subtle:{{ tv.accentSubtle }};--image-placeholder:{{ tv.bgSurface }};--focus-ring:{{ tv.accent }}">
+  <header style="position:sticky;top:0;z-index:30;background:{{ headerBg }};backdrop-filter:{{ headerBlur }};-webkit-backdrop-filter:{{ headerBlur }}">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-5);height:var(--header-height);padding:0 var(--grid-margin);max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;box-sizing:border-box">
       <div style="display:flex;align-items:baseline;gap:var(--space-9);min-width:0">
         <a href="#" onClick="{{ goHome }}" style="font-size:15px;font-weight:500;letter-spacing:-0.02em;color:var(--text-primary);white-space:nowrap">Federico Stefan</a>
-        <span style="font-size:13px;color:var(--text-secondary);white-space:nowrap">UX/UI Designer</span>
+        <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}"><span style="font-size:13px;color:var(--text-secondary);white-space:nowrap">UX/UI Designer</span></sc-if>
       </div>
+      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="{{ menuLabel }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:var(--space-3);min-width:44px;height:44px;margin-right:-10px;padding:0 10px;font-size:14px;color:var(--text-primary)">
+          <span>{{ menuText }}</span>
+          <span aria-hidden="true" style="position:relative;width:18px;height:10px">
+            <span style="position:absolute;left:0;right:0;top:{{ barTop }};height:1.5px;background:currentColor;transform:{{ barRotA }};transition:transform var(--dur-base) var(--ease-out), top var(--dur-base) var(--ease-out)"></span>
+            <span style="position:absolute;left:0;right:0;top:{{ barBot }};height:1.5px;background:currentColor;transform:{{ barRotB }};transition:transform var(--dur-base) var(--ease-out), top var(--dur-base) var(--ease-out)"></span>
+          </span>
+        </button>
+      </sc-if>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex;align-items:center;gap:var(--space-6)">
         <nav style="display:flex;gap:var(--space-6)">
           <sc-for list="{{ headerNav }}" as="l" hint-placeholder-count="4">
@@ -49,8 +59,27 @@
           <button type="button" onClick="{{ setDark }}" aria-pressed="{{ isDark }}" style="all:unset;cursor:pointer;color:{{ darkColor }};transition:color var(--dur-base) var(--ease-out)">Dark</button>
         </div>
       </div>
+      </sc-if>
     </div>
   </header>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:var(--header-height) 0 0 0;z-index:25;background:var(--bg-page);display:flex;flex-direction:column;justify-content:space-between;padding:var(--space-8) var(--grid-margin) var(--space-9);box-sizing:border-box;overflow-y:auto">
+      <nav style="display:flex;flex-direction:column;border-top:1px solid var(--border-default)">
+        <sc-for list="{{ headerNav }}" as="l" hint-placeholder-count="4">
+          <a href="#" onClick="{{ l.go }}" style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding:var(--space-5) 0;border-bottom:1px solid var(--border-default);font-size:40px;line-height:1;letter-spacing:-0.04em;font-weight:500;color:{{ l.color }}">
+            <span>{{ l.label }}</span>
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:{{ l.dot }}"></span>
+          </a>
+        </sc-for>
+      </nav>
+      <div role="group" aria-label="Colour mode" style="display:flex;align-items:center;gap:var(--space-3);font-size:16px;padding-top:var(--space-8)">
+        <button type="button" onClick="{{ setLight }}" aria-pressed="{{ isLight }}" style="all:unset;cursor:pointer;min-height:44px;display:flex;align-items:center;color:{{ lightColor }}">Light</button>
+        <span style="color:var(--text-muted)">/</span>
+        <button type="button" onClick="{{ setDark }}" aria-pressed="{{ isDark }}" style="all:unset;cursor:pointer;min-height:44px;display:flex;align-items:center;color:{{ darkColor }}">Dark</button>
+      </div>
+    </div>
+  </sc-if>
 
   <main style="flex:1">
 
@@ -169,7 +198,7 @@
         <div ref="{{ setSticky }}" style="position:sticky;top:var(--header-height);height:calc(100vh - var(--header-height));overflow:hidden">
           <div ref="{{ setTrack }}" style="display:flex;align-items:stretch;gap:var(--space-11);height:100%;width:max-content;padding:min(48px,5vh) var(--grid-margin) min(64px,7vh);box-sizing:border-box;will-change:transform;--type-display-xl:clamp(56px,14vh,144px);--type-display:clamp(40px,9vh,96px);--type-h1:clamp(30px,6vh,64px);--type-h2:clamp(22px,4vh,44px);--type-h3:clamp(17px,3vh,30px);--type-body-lg:clamp(15px,2.2vh,22px);--type-body:clamp(14px,2vh,17px);--type-small:clamp(12px,1.8vh,13px)">
 
-            <div style="flex:none;width:min(52vw,760px);height:100%;display:flex;flex-direction:column;justify-content:space-between">
+            <div style="order:{{ p.o.intro }};flex:none;width:min(52vw,760px);height:100%;display:flex;flex-direction:column;justify-content:space-between">
               <div style="display:flex;justify-content:space-between;align-items:center">
                 <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="←" size="small" muted="{{ true }}" onClick="{{ goProjects }}" hint-size="90px,20px">Projects</x-import>
                 <span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-secondary)">{{ p.counter }}</span>
@@ -184,20 +213,20 @@
               </div>
             </div>
 
-            <div style="flex:none;height:100%;aspect-ratio:16 / 10;position:relative;background:var(--image-placeholder)">
+            <div style="order:{{ p.o.hero }};flex:none;height:100%;aspect-ratio:16 / 10;position:relative;background:var(--image-placeholder)">
               <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-hero" src="{{ p.heroSrc }}" shape="rect" placeholder="{{ p.heroLabel }}"></image-slot>
             </div>
 
-            <div style="flex:none;width:min(62vw,780px);height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:var(--space-6)">
+            <div style="order:{{ p.o.ov }};flex:none;width:min(62vw,780px);height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:var(--space-6)">
               <span style="font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">Project Overview</span>
               <p style="margin:0;font-size:clamp(15px,min(1.7vw,2.9vh),26px);line-height:1.4;letter-spacing:var(--tracking-heading);text-wrap:pretty">{{ p.overview }}</p>
             </div>
 
-            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="flex:none;height:100%;aspect-ratio:1 / 2;display:grid;grid-template-rows:1fr 1fr">
+            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="order:{{ p.o.sh1 }};flex:none;height:100%;aspect-ratio:1 / 2;display:grid;grid-template-rows:1fr 1fr">
               <div data-anim="morph" style="border-radius:50%;background:{{ p.accent }}"></div>
               <div style="position:relative;overflow:hidden"><div data-anim="breathe" style="position:absolute;left:0;top:50%;width:100%;aspect-ratio:1;border-radius:50%;background:#C3B1E8"></div></div>
             </div></sc-if>
-            <div style="flex:none;width:min(64vw,880px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:min(24px,2.5vh)">
+            <div style="order:{{ p.o.obj }};flex:none;width:min(64vw,880px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:min(24px,2.5vh)">
               <h2 style="margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Objectives</h2>
               <ol style="margin:0;padding:0;list-style:none;border-bottom:1px solid var(--border-default)">
                 <sc-for list="{{ p.objectivesN }}" as="o" hint-placeholder-count="5">
@@ -209,7 +238,7 @@
               </ol>
             </div>
 
-            <figure style="flex:none;margin:0;height:100%;display:flex;flex-direction:{{ p.fig1.fdir }};justify-content:space-between;align-items:flex-end;gap:var(--space-6)">
+            <figure style="order:{{ p.o.f1 }};flex:none;margin:0;height:100%;display:flex;flex-direction:{{ p.fig1.fdir }};justify-content:space-between;align-items:flex-end;gap:var(--space-6)">
               <div style="flex:none;align-self:flex-start;height:{{ p.fig1.h }};aspect-ratio:{{ p.fig1.ratio }};position:relative;background:var(--image-placeholder)">
                 <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig1" src="{{ p.fig1.src }}" shape="rect" placeholder="{{ p.fig1.label }}"></image-slot>
               </div>
@@ -220,7 +249,7 @@
               </figcaption>
             </figure>
 
-            <figure style="flex:none;margin:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;gap:var(--space-5)">
+            <figure style="order:{{ p.o.f2 }};flex:none;margin:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;gap:var(--space-5)">
               <figcaption style="display:flex;flex-direction:column;gap:var(--space-2);max-width:44ch">
                 <span style="display:flex;gap:var(--space-4);align-items:baseline"><span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ p.fig2.n }}</span><span style="font-size:var(--type-body-lg);font-weight:500">{{ p.fig2.t }}</span></span>
                 <span style="font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ p.fig2.d }}</span>
@@ -235,7 +264,7 @@
               </div>
             </figure>
 
-            <figure style="flex:none;margin:0;height:100%;display:flex;align-items:flex-end;gap:var(--space-6)">
+            <figure style="order:{{ p.o.f3 }};flex:none;margin:0;height:100%;display:flex;align-items:flex-end;gap:var(--space-6)">
               <div style="height:100%;aspect-ratio:{{ p.fig3.ratio }};position:relative;background:var(--image-placeholder)">
                 <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig3" src="{{ p.fig3.src }}" shape="rect" placeholder="{{ p.fig3.label }}"></image-slot>
               </div>
@@ -245,7 +274,7 @@
               </figcaption>
             </figure>
             <sc-for list="{{ p.extras }}" as="x" hint-placeholder-count="0">
-              <figure style="flex:none;margin:0;height:100%;display:flex;align-items:flex-end;gap:var(--space-6)">
+              <figure style="order:{{ p.o.ex }};flex:none;margin:0;height:100%;display:flex;align-items:flex-end;gap:var(--space-6)">
                 <div style="height:100%;aspect-ratio:{{ x.ratio }};position:relative;background:var(--image-placeholder)">
                   <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ x.id }}" src="{{ x.src }}" shape="rect" placeholder="{{ x.label }}"></image-slot>
                 </div>
@@ -261,22 +290,22 @@
               </figure>
             </sc-for>
 
-            <div style="flex:none;display:flex;gap:var(--space-11);height:calc(100% + min(48px,5vh) + min(64px,7vh));margin:calc(-1 * min(48px,5vh)) 0 calc(-1 * min(64px,7vh));padding:min(48px,5vh) var(--space-10) min(64px,7vh);box-sizing:border-box;background:{{ changedBg }};color:{{ changedInk }}">
+            <div style="order:{{ p.o.chg }};flex:none;display:flex;gap:var(--space-11);height:calc(100% + min(48px,5vh) + min(64px,7vh));margin:calc(-1 * min(48px,5vh)) 0 calc(-1 * min(64px,7vh));padding:min(48px,5vh) var(--space-10) min(64px,7vh);box-sizing:border-box;background:{{ changedBg }};color:{{ changedInk }}">
               <div style="flex:none;width:min(60vw,760px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
                 <h2 style="margin:0;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500">What Changed</h2>
                 <p style="margin:0;font-size:var(--type-body);line-height:var(--lh-body);color:{{ changedMuted }};text-wrap:pretty">{{ p.changedIntro }}</p>
               </div>
-              <sc-for list="{{ p.screensN }}" as="s" hint-placeholder-count="4">
+              <sc-for list="{{ p.probN }}" as="s" hint-placeholder-count="4">
                 <sc-if value="{{ s.notPair }}" hint-placeholder-val="{{ true }}">
                 <div style="flex:none;height:100%;display:flex;flex-direction:{{ s.dir }};align-items:flex-end;gap:var(--space-6)">
                   <div style="flex:none;width:clamp(240px,34ch,340px);display:flex;flex-direction:column;gap:var(--space-3);padding-top:var(--space-4);border-top:1px solid {{ changedRule }}">
                     <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">{{ s.n }}</span>
                     <h3 style="margin:0;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
-                    <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.d }}</p>
+                    <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.dA }}</p>
                   </div>
-                  <div style="flex:none;height:100%;aspect-ratio:{{ s.ratio }};position:relative;background:{{ changedSlot }}">
+                  <sc-if value="{{ p.inlineAfter }}" hint-placeholder-val="{{ true }}"><div style="flex:none;height:100%;aspect-ratio:{{ s.ratio }};position:relative;background:{{ changedSlot }}">
                     <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}" src="{{ s.src }}" shape="rect" placeholder="{{ s.label }}"></image-slot>
-                  </div>
+                  </div></sc-if>
                 </div>
                 </sc-if>
                 <sc-if value="{{ s.isPair }}" hint-placeholder-val="{{ false }}">
@@ -284,7 +313,7 @@
                   <div style="flex:none;align-self:flex-end;width:clamp(240px,34ch,340px);display:flex;flex-direction:column;gap:var(--space-3);padding-top:var(--space-4);border-top:1px solid {{ changedRule }}">
                     <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">{{ s.n }}</span>
                     <h3 style="margin:0;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
-                    <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.d }}</p>
+                    <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.dA }}</p>
                   </div>
                   <div style="flex:none;display:flex;flex-direction:column;gap:var(--space-3)">
                     <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">service.berlin.de</span>
@@ -297,23 +326,23 @@
                     </div>
                     <p style="width:0;min-width:100%;margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.cap }}</p>
                   </div>
-                  <div style="flex:none;display:flex;flex-direction:column;gap:var(--space-3)">
+                  <sc-if value="{{ p.inlineAfter }}" hint-placeholder-val="{{ true }}"><div style="flex:none;display:flex;flex-direction:column;gap:var(--space-3)">
                     <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">Redesign</span>
                     <div style="flex:none;height:calc(100vh - var(--header-height) - 260px);aspect-ratio:{{ s.afterRatio }};position:relative;background:{{ changedSlot }}">
                       <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}-after" src="{{ s.afterSrc }}" shape="rect" placeholder="Redesign"></image-slot>
                     </div>
-                  </div>
+                  </div></sc-if>
                 </div>
                 </sc-if>
               </sc-for>
             </div>
 
-            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="flex:none;height:100%;aspect-ratio:2 / 3;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr)">
+            <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="order:{{ p.o.sh2 }};flex:none;height:100%;aspect-ratio:2 / 3;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr)">
               <div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(35% 0, 65% 0, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%, 0 35%, 35% 35%)"></div><div></div>
               <div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:60%;aspect-ratio:1;box-sizing:border-box;border:clamp(8px,2vh,18px) solid #6A4BC4;border-radius:50%"></div></div><div style="border-radius:0 100% 0 0;background:{{ p.accent }}"></div>
               <div style="border-radius:50%;background:#6B7A70"></div><div style="border-radius:100% 0 0 0;background:#6A4BC4"></div>
             </div></sc-if>
-            <div style="flex:none;width:min(90vw,1180px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
+            <div style="order:{{ p.o.proc }};flex:none;width:min(90vw,1180px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
               <div style="display:flex;gap:var(--space-9);align-items:flex-start">
                 <h2 style="flex:0 0 auto;margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Creative Process</h2>
                 <p style="margin:0;max-width:48ch;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">{{ p.processIntro }}</p>
@@ -331,18 +360,42 @@
               </div>
             </div>
 
-            <div style="flex:none;width:min(96vw,1240px);height:100%;display:flex;gap:var(--space-9)">
+            <div style="order:{{ p.o.concl }};flex:none;width:min(96vw,1240px);height:100%;display:flex;gap:var(--space-9)">
               <div style="flex:1.2;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
                 <span style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)"><span style="width:6px;height:6px;border-radius:50%;background:{{ p.accent }}"></span>Conclusion</span>
                 <p style="margin:0;font-size:clamp(15px,min(1.8vw,3vh),28px);line-height:1.3;letter-spacing:var(--tracking-heading);text-wrap:pretty">{{ p.conclusion1 }}</p>
               </div>
               <p style="flex:1;margin:0;align-self:flex-end;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">{{ p.conclusion2 }}</p>
             </div>
-            <sc-if value="{{ p.hasClosing }}" hint-placeholder-val="{{ false }}"><div style="flex:none;height:100%;aspect-ratio:{{ p.closingRatio }};position:relative;background:var(--image-placeholder)">
+            <sc-if value="{{ p.hasClosing }}" hint-placeholder-val="{{ false }}"><div style="order:{{ p.o.close }};flex:none;height:100%;aspect-ratio:{{ p.closingRatio }};position:relative;background:var(--image-placeholder)">
               <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-closing" src="{{ p.closingSrc }}" shape="rect" placeholder="Closing image"></image-slot>
             </div></sc-if>
 
-            <div style="flex:none;width:calc(100vw - 2 * var(--grid-margin));height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:var(--space-4);box-sizing:border-box">
+            <sc-for list="{{ p.chapters }}" as="c" hint-placeholder-count="0">
+              <div style="order:{{ c.order }};flex:none;width:min(46vw,620px);height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6)">
+                <span style="padding-top:var(--space-4);border-top:1px solid var(--border-strong);font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ c.n }}</span>
+                <div style="display:flex;flex-direction:column;gap:var(--space-6)">
+                  <h2 style="margin:0;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500">{{ c.t }}</h2>
+                  <p style="margin:0;max-width:34ch;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);color:var(--text-secondary);text-wrap:pretty">{{ c.d }}</p>
+                </div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ p.story }}" hint-placeholder-val="{{ false }}"><div style="order:{{ p.o.after }};flex:none;display:flex;gap:var(--space-11);height:100%">
+              <sc-for list="{{ p.afterN }}" as="s" hint-placeholder-count="0">
+                <div style="flex:none;height:100%;display:flex;align-items:flex-end;gap:var(--space-6)">
+                  <div style="flex:none;width:clamp(240px,34ch,340px);display:flex;flex-direction:column;gap:var(--space-3);padding-top:var(--space-4);border-top:1px solid var(--border-strong)">
+                    <span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ s.n }} Redesign</span>
+                    <h3 style="margin:0;font-size:var(--type-h3);line-height:var(--lh-h3);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
+                    <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:var(--text-secondary);text-wrap:pretty">{{ s.dB }}</p>
+                  </div>
+                  <div style="flex:none;height:100%;aspect-ratio:{{ s.ratio }};position:relative;background:var(--image-placeholder)">
+                    <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}-sol" src="{{ s.src }}" shape="rect" placeholder="Redesign"></image-slot>
+                  </div>
+                </div>
+              </sc-for>
+            </div></sc-if>
+
+            <div style="order:{{ p.o.next }};flex:none;width:calc(100vw - 2 * var(--grid-margin));height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:var(--space-4);box-sizing:border-box">
               <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.NextProject" title="{{ p.nextTitle }}" number="{{ p.nextCounter }}" onClick="{{ p.openNext }}" hint-size="100%,140px"></x-import>
             </div>
           </div>
@@ -355,8 +408,8 @@
 
     <!-- CASE STUDY — VERTICAL -->
     <sc-if value="{{ isCaseV }}" hint-placeholder-val="{{ false }}">
-      <article>
-        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-9) var(--grid-margin) var(--space-10);box-sizing:border-box">
+      <article style="display:flex;flex-direction:column">
+        <section style="order:{{ p.o.hdr }};width:100%;max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-9) var(--grid-margin) var(--space-10);box-sizing:border-box">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-12)">
             <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.TextLink" arrow="←" size="small" muted="{{ true }}" onClick="{{ goProjects }}" hint-size="90px,20px">Projects</x-import>
             <span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-secondary)">{{ p.counter }}</span>
@@ -369,20 +422,20 @@
           </div>
         </section>
 
-        <div data-reveal="" style="position:relative;width:100%;aspect-ratio:16 / 8;background:var(--image-placeholder)">
+        <div data-reveal="" style="order:{{ p.o.hero }};position:relative;width:100%;aspect-ratio:16 / 8;background:var(--image-placeholder)">
           <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-hero" src="{{ p.heroSrc }}" shape="rect" placeholder="{{ p.heroLabel }}"></image-slot>
         </div>
 
-        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
+        <section style="order:{{ p.o.vov }};width:100%;max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
           <div style="display:flex;flex-wrap:wrap;gap:var(--space-5) var(--grid-gutter)">
             <span data-reveal="" style="flex:1 1 220px;font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary);padding-top:var(--space-2)">Project Overview</span>
             <p data-reveal="" style="flex:3 1 560px;margin:0;max-width:34em;font-size:var(--type-h3);line-height:1.4;letter-spacing:var(--tracking-heading);text-wrap:pretty">{{ p.overview }}</p>
           </div>
         </section>
 
-        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
+        <section style="order:{{ p.o.vobj }};width:100%;max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
           <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--space-8) var(--grid-gutter)">
-            <h2 data-reveal="" style="flex:1 1 300px;position:sticky;top:calc(var(--header-height) + var(--space-6));margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Objectives</h2>
+            <h2 data-reveal="" style="flex:1 1 300px;position:{{ stickyPos }};top:calc(var(--header-height) + var(--space-6));margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Objectives</h2>
             <ol style="flex:2 1 560px;margin:0;padding:0;list-style:none;border-bottom:1px solid var(--border-default)">
               <sc-for list="{{ p.objectivesN }}" as="o" hint-placeholder-count="5">
                 <li data-reveal="" style="display:flex;gap:var(--grid-gutter);padding:var(--space-5) 0 var(--space-6);border-top:1px solid var(--border-default)">
@@ -394,7 +447,7 @@
           </div>
         </section>
 
-        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:var(--space-13)">
+        <section style="order:{{ p.o.figs }};width:100%;max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:var(--space-13)">
           <figure data-reveal="" style="margin:0;display:flex;flex-direction:column;gap:var(--space-5)">
             <div style="position:relative;width:100%;max-width:{{ p.fig1.vmax }};aspect-ratio:{{ p.fig1.ratio }};background:var(--image-placeholder)">
               <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ p.slug }}-fig1" src="{{ p.fig1.src }}" shape="rect" placeholder="{{ p.fig1.label }}"></image-slot>
@@ -447,23 +500,23 @@
           </div>
         </section>
 
-        <section style="margin-top:var(--section-gap);background:{{ changedBg }};color:{{ changedInk }}">
+        <section style="order:{{ p.o.chgV }};width:100%;margin-top:var(--section-gap);background:{{ changedBg }};color:{{ changedInk }}">
           <div style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin);box-sizing:border-box">
             <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-8) var(--grid-gutter);margin-bottom:var(--space-13)">
               <h2 data-reveal="" style="margin:0;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500">What Changed</h2>
               <p data-reveal="" style="margin:0;max-width:52ch;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);color:{{ changedMuted }};text-wrap:pretty">{{ p.changedIntro }}</p>
             </div>
             <div style="display:flex;flex-direction:column;gap:var(--space-12)">
-              <sc-for list="{{ p.screensN }}" as="s" hint-placeholder-count="4">
+              <sc-for list="{{ p.probN }}" as="s" hint-placeholder-count="4">
                 <sc-if value="{{ s.notPair }}" hint-placeholder-val="{{ true }}">
                 <div data-reveal="" style="display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};align-items:flex-end;gap:var(--space-6) var(--space-11)">
-                  <div style="flex:3 1 480px;position:relative;aspect-ratio:{{ s.ratio }};background:{{ changedSlot }}">
+                  <sc-if value="{{ p.inlineAfter }}" hint-placeholder-val="{{ true }}"><div style="flex:3 1 480px;position:relative;aspect-ratio:{{ s.ratio }};background:{{ changedSlot }}">
                     <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}" src="{{ s.src }}" shape="rect" placeholder="{{ s.label }}"></image-slot>
-                  </div>
+                  </div></sc-if>
                   <div style="flex:2 1 300px;display:flex;flex-direction:column;gap:var(--space-4);padding-top:var(--space-4);border-top:1px solid {{ changedRule }}">
                     <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">{{ s.n }}</span>
                     <h3 style="margin:0;font-size:var(--type-h2);line-height:var(--lh-h2);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
-                    <p style="margin:0;max-width:46ch;font-size:var(--type-body);line-height:var(--lh-body);color:{{ changedMuted }};text-wrap:pretty">{{ s.d }}</p>
+                    <p style="margin:0;max-width:46ch;font-size:var(--type-body);line-height:var(--lh-body);color:{{ changedMuted }};text-wrap:pretty">{{ s.dA }}</p>
                   </div>
                 </div>
                 </sc-if>
@@ -472,7 +525,7 @@
                   <div style="display:flex;flex-direction:column;gap:var(--space-4);max-width:62ch;padding-top:var(--space-4);border-top:1px solid {{ changedRule }}">
                     <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">{{ s.n }}</span>
                     <h3 style="margin:0;font-size:var(--type-h2);line-height:var(--lh-h2);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
-                    <p style="margin:0;font-size:var(--type-body);line-height:var(--lh-body);color:{{ changedMuted }};text-wrap:pretty">{{ s.d }}</p>
+                    <p style="margin:0;font-size:var(--type-body);line-height:var(--lh-body);color:{{ changedMuted }};text-wrap:pretty">{{ s.dA }}</p>
                   </div>
                   <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:var(--space-8) var(--grid-gutter)">
                     <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:var(--space-3)">
@@ -484,12 +537,12 @@
                       </sc-for>
                       <p style="margin:0;font-size:var(--type-small);line-height:var(--lh-small);color:{{ changedMuted }};text-wrap:pretty">{{ s.cap }}</p>
                     </div>
-                    <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:var(--space-3)">
+                    <sc-if value="{{ p.inlineAfter }}" hint-placeholder-val="{{ true }}"><div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:var(--space-3)">
                       <span style="font-family:var(--font-mono);font-size:var(--type-small);color:{{ changedMuted }}">Redesign</span>
                       <div style="position:relative;aspect-ratio:{{ s.afterRatio }};background:{{ changedSlot }}">
                         <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}-after-v" src="{{ s.afterSrc }}" shape="rect" placeholder="Redesign"></image-slot>
                       </div>
-                    </div>
+                    </div></sc-if>
                   </div>
                 </div>
                 </sc-if>
@@ -498,7 +551,7 @@
           </div>
         </section>
 
-        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
+        <section style="order:{{ p.o.vproc }};width:100%;max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
           <div style="display:flex;flex-wrap:wrap;gap:var(--space-6) var(--grid-gutter);margin-bottom:var(--space-11)">
             <h2 data-reveal="" style="flex:1 1 300px;margin:0;font-size:var(--type-h1);line-height:var(--lh-h1);letter-spacing:var(--tracking-heading);font-weight:500">Creative Process</h2>
             <p data-reveal="" style="flex:2 1 520px;margin:0;max-width:40em;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);text-wrap:pretty">{{ p.processIntro }}</p>
@@ -516,7 +569,7 @@
           </div>
         </section>
 
-        <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin);box-sizing:border-box">
+        <section style="order:{{ p.o.vconcl }};width:100%;max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin);box-sizing:border-box">
           <span data-reveal="" style="display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-8);font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)"><span style="width:6px;height:6px;border-radius:50%;background:{{ p.accent }}"></span>Conclusion</span>
           <p data-reveal="" style="margin:0 0 var(--space-10);max-width:30em;font-size:var(--type-h2);line-height:1.2;letter-spacing:var(--tracking-heading);text-wrap:pretty">{{ p.conclusion1 }}</p>
           <div style="display:flex;justify-content:flex-end">
@@ -529,6 +582,29 @@
             <x-import component-from-global-scope="FedericoStefanDesignSystem_704060.NextProject" title="{{ p.nextTitle }}" number="{{ p.nextCounter }}" onClick="{{ p.openNext }}" hint-size="100%,220px"></x-import>
           </div>
         </section>
+        <sc-for list="{{ p.chapters }}" as="c" hint-placeholder-count="0">
+          <section style="order:{{ c.order }};width:100%;max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box">
+            <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--space-6) var(--grid-gutter);padding-top:var(--space-4);border-top:1px solid var(--border-strong)">
+              <span style="flex:0 0 64px;font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ c.n }}</span>
+              <h2 style="flex:1 1 280px;margin:0;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500">{{ c.t }}</h2>
+              <p style="flex:0 1 420px;margin:0;font-size:var(--type-body-lg);line-height:var(--lh-body-lg);color:var(--text-secondary);text-wrap:pretty">{{ c.d }}</p>
+            </div>
+          </section>
+        </sc-for>
+        <sc-if value="{{ p.story }}" hint-placeholder-val="{{ false }}"><section style="order:{{ p.o.after }};width:100%;max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--section-gap) var(--grid-margin) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:var(--space-12)">
+          <sc-for list="{{ p.afterN }}" as="s" hint-placeholder-count="0">
+            <div data-reveal="" style="display:flex;flex-wrap:wrap;flex-direction:{{ s.dir }};align-items:flex-end;gap:var(--space-6) var(--space-11)">
+              <div style="flex:3 1 480px;position:relative;aspect-ratio:{{ s.ratio }};background:var(--image-placeholder)">
+                <image-slot style="position:absolute;inset:0;width:100%;height:100%" id="{{ s.id }}-sol-v" src="{{ s.src }}" shape="rect" placeholder="Redesign"></image-slot>
+              </div>
+              <div style="flex:2 1 300px;display:flex;flex-direction:column;gap:var(--space-4);padding-top:var(--space-4);border-top:1px solid var(--border-strong)">
+                <span style="font-family:var(--font-mono);font-size:var(--type-small);color:var(--text-muted)">{{ s.n }} Redesign</span>
+                <h3 style="margin:0;font-size:var(--type-h2);line-height:var(--lh-h2);letter-spacing:var(--tracking-heading);font-weight:500">{{ s.t }}</h3>
+                <p style="margin:0;max-width:46ch;font-size:var(--type-body);line-height:var(--lh-body);color:var(--text-secondary);text-wrap:pretty">{{ s.dB }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </section></sc-if>
       </article>
     </sc-if>
 
@@ -536,7 +612,7 @@
     <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
       <section style="max-width:calc(var(--content-max) + 2 * var(--grid-margin));margin:0 auto;padding:var(--space-11) var(--grid-margin) 0;box-sizing:border-box">
         <span data-reveal="" style="display:block;margin-bottom:var(--space-6);font-size:var(--type-micro);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-secondary)">About</span>
-        <sc-if value="{{ showShapes }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="float:right;display:grid;grid-template-columns:repeat(3,80px);grid-template-rows:repeat(3,80px);margin:0 0 var(--space-6) var(--space-8)"><div data-anim="morph" style="border-radius:50%;background:#6A4BC4"></div><div></div><div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div><div style="position:relative;overflow:hidden"><div style="position:absolute;left:0;top:50%;width:100%;aspect-ratio:1;border-radius:50%;background:#3C4A6B"></div></div><div style="border-radius:100% 0 0 0;background:#C3B1E8"></div><div></div><div></div><div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:62%;aspect-ratio:1;box-sizing:border-box;border:max(6px,14%) solid #6A4BC4;border-radius:50%"></div></div><div data-anim="breathe" style="border-radius:999px 999px 0 0;background:#6B7A70;transform-origin:bottom"></div></div></sc-if>
+        <sc-if value="{{ showShapesWide }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" data-reveal="" style="float:right;display:grid;grid-template-columns:repeat(3,80px);grid-template-rows:repeat(3,80px);margin:0 0 var(--space-6) var(--space-8)"><div data-anim="morph" style="border-radius:50%;background:#6A4BC4"></div><div></div><div data-anim="spin" style="background:#C3B1E8;clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%)"></div><div style="position:relative;overflow:hidden"><div style="position:absolute;left:0;top:50%;width:100%;aspect-ratio:1;border-radius:50%;background:#3C4A6B"></div></div><div style="border-radius:100% 0 0 0;background:#C3B1E8"></div><div></div><div></div><div style="display:flex;align-items:center;justify-content:center"><div data-anim="float" style="width:62%;aspect-ratio:1;box-sizing:border-box;border:max(6px,14%) solid #6A4BC4;border-radius:50%"></div></div><div data-anim="breathe" style="border-radius:999px 999px 0 0;background:#6B7A70;transform-origin:bottom"></div></div></sc-if>
         <h1 data-reveal="" style="margin:0;max-width:18ch;font-size:var(--type-display);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:500;text-wrap:balance">I design digital experiences that strengthen your brand identity, simplify how users interact with your product and deliver results that matter.</h1>
       </section>
 
@@ -865,11 +941,30 @@ const STEPS = [
   'Comparing versions, identifying friction points and refining until the experience feels right.'
 ];
 
+const STORY = {
+  anmeldung: [
+    'It started with my own Anmeldung, after moving to Berlin without speaking German.',
+    'Going through the live flow showed where it breaks down for someone who does not speak German.',
+    'The redesign keeps Berlin\u2019s visual identity and changes the flow.'
+  ],
+  nordstern: [
+    'I was the sole designer on Nordstern, starting from a blank page: no brand, no design system, no dashboard.',
+    'An autonomous AI system runs complex operations in the background, and the first screens did not explain what it was doing.',
+    'The redesign makes each screen explain itself, so users know where they are, what has been done and what comes next.'
+  ],
+  collab: [
+    'Collab. started with a gap between collaboration tools that were either too complex or too narrow.',
+    'Critiques of the first version showed that the friction came from small decisions, not missing features.',
+    'Version B changes those details across four screens of the project creation flow.'
+  ]
+};
+const ORD_DEF = { intro: 1, hero: 2, ov: 3, sh1: 4, obj: 5, f1: 6, f2: 7, f3: 8, ex: 9, chg: 10, sh2: 11, proc: 12, concl: 13, close: 14, next: 20, after: 15, hdr: 1, vov: 3, vobj: 4, figs: 5, chgV: 6, vproc: 7, vconcl: 20 };
+const ORD_STORY = { intro: 1, hero: 2, ov: 4, proc: 5, sh1: 6, chg: 8, obj: 9, sh2: 10, f1: 12, f2: 13, f3: 14, ex: 15, after: 16, concl: 17, close: 18, next: 20, hdr: 1, vov: 4, vproc: 5, chgV: 8, vobj: 9, figs: 12, vconcl: 20 };
 const NAV = { Home: 'home', Projects: 'projects', About: 'about', Contact: 'contact' };
 const pad = n => String(n).padStart(2, '0');
 
 class Component extends DCLogic {
-  state = { theme: (() => { try { return localStorage.getItem('fs-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) { return 'light'; } })(), page: this.props.startPage ?? 'home', hov: null, px: 0, py: 0, first: '', last: '', email: '', msg: '', sent: false, error: false };
+  state = { theme: (() => { try { return localStorage.getItem('fs-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) { return 'light'; } })(), page: this.props.startPage ?? 'home', hov: null, px: 0, py: 0, mobile: typeof window !== 'undefined' && window.innerWidth < 760, menuOpen: false, first: '', last: '', email: '', msg: '', sent: false, error: false };
 
   cv(e, dl) {
     e.preventDefault();
@@ -913,6 +1008,8 @@ class Component extends DCLogic {
   }
   closeCv() { this.setState({ cvOpen: false }); document.body.style.overflow = ''; }
   componentDidMount() {
+    this.onVw = () => { const m = window.innerWidth < 760; if (m !== this.state.mobile) this.setState({ mobile: m, menuOpen: m && this.state.menuOpen }); };
+    window.addEventListener('resize', this.onVw);
     this.reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!this.reduced && 'IntersectionObserver' in window) {
       this.io = new IntersectionObserver(es => es.forEach(e => {
@@ -924,7 +1021,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     clearInterval(this.t); this.io && this.io.disconnect(); this.ro && this.ro.disconnect();
-    window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); window.removeEventListener('resize', this.onVw);
   }
   componentDidUpdate(pp) {
     if (pp.startPage !== this.props.startPage && this.props.startPage) this.go(this.props.startPage);
@@ -964,6 +1061,7 @@ class Component extends DCLogic {
   }
   animate() {
     if (this.reduced || !Element.prototype.animate) return;
+    if (this.state.mobile) { document.querySelectorAll('[data-anim]').forEach(el => { if (el.__a) { el.__a.cancel(); el.__a = null; el.__anim = null; } }); return; }
     const K = {
       spin: [[{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }], { duration: 18000, iterations: Infinity }],
       morph: [[{ borderRadius: '50%' }, { borderRadius: '38% 62% 55% 45% / 52% 40% 60% 48%' }, { borderRadius: '60% 40% 42% 58% / 45% 58% 42% 55%' }, { borderRadius: '50%' }], { duration: 9000, iterations: Infinity, easing: 'ease-in-out' }],
@@ -1009,13 +1107,14 @@ class Component extends DCLogic {
       el.setAttribute('data-rv', '');
       const r = el.getBoundingClientRect();
       if (r.top < window.innerHeight) return;
-      el.style.opacity = '0'; el.style.transform = 'translateY(24px)';
+      el.style.opacity = '0'; el.style.transform = this.state.mobile ? 'translateY(12px)' : 'translateY(24px)';
       el.style.transition = 'opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out)';
       this.io.observe(el);
     });
   }
   go(page) {
-    this.setState({ page, hov: null, sent: false, error: false });
+    this.setState({ page, hov: null, sent: false, error: false, menuOpen: false });
+    document.body.style.overflow = '';
     window.scrollTo(0, 0);
   }
 
@@ -1068,8 +1167,12 @@ class Component extends DCLogic {
       const M = c.media || {};
       const DR = { fig1: '16 / 9', fig2: '4 / 3', fig3: '4 / 5' };
       const lab = (f, k) => ({ ...f, label: f.n + ' ' + f.t.replace(/:$/, ''), src: M[k] ? M[k][0] : undefined, ratio: M[k] ? M[k][1] : DR[k], has2: !!M[k + 'b'], src2: M[k + 'b'] ? M[k + 'b'][0] : undefined, ratio2: M[k + 'b'] ? M[k + 'b'][1] : '4 / 3' });
+      const story = STORY[c.slug];
+      const split = d => { const m = (d || '').match(/The new (design|empty state)/); return m && m.index > 0 ? [d.slice(0, m.index).trim(), d.slice(m.index)] : ['', d]; };
       p = {
-        ...c, counter: pad(idx + 1) + ' / ' + pad(PROJECTS.length),
+        ...c, story: !!story, inlineAfter: !story, o: story ? ORD_STORY : ORD_DEF,
+        chapters: story ? [['01', 'The story', story[0], 3], ['02', 'The problem', story[1], 7], ['03', 'The solution', story[2], 11]].map(([n, t, d, o]) => ({ n, t, d, order: o, vorder: o })) : [],
+        counter: pad(idx + 1) + ' / ' + pad(PROJECTS.length),
         heroLabel: c.title + ' \u2014 key visual',
         fig1: (() => {
           const f = lab(c.fig1, 'fig1'); const [w, hh] = f.ratio.split('/').map(Number); const tall = w / hh < 1.2;
@@ -1079,16 +1182,27 @@ class Component extends DCLogic {
         objectivesN: c.objectives.map((t, i) => ({ n: pad(i + 1), t })),
         processN: c.process.map((t, i) => { const im = (M.process || {})[i]; return { n: pad(i + 1), t, hasImg: !!im, img: im ? im[0] : undefined, imgRatio: im ? im[1] : '4 / 3', imgId: c.slug + '-process' + (i + 1) }; }),
         hasClosing: !!M.closing, closingSrc: M.closing ? M.closing[0] : undefined, closingRatio: M.closing ? M.closing[1] : '4 / 3',
-        screensN: c.screens.map((x, i) => ({ ...x, id: c.slug + '-screen' + (i + 1), label: x.n.replace(/:$/, '') + ' \u2014 ' + x.t.replace(/:$/, ''), src: M.screens ? M.screens[i][0] : undefined, ratio: M.screens ? M.screens[i][1] : '16 / 10', dir: i % 2 ? 'row-reverse' : 'row', vdir: i % 2 ? 'column-reverse' : 'column', ...(() => { const P = (M.pairs || [])[i]; return { isPair: !!P, notPair: !P, cap: P ? P.cap : '', before: P ? P.before.map((b, j) => ({ src: b[0], ratio: b[1], id: c.slug + '-screen' + (i + 1) + '-before' + (j + 1) })) : [], afterSrc: P ? P.after[0] : undefined, afterRatio: P ? P.after[1] : '16 / 10' }; })() })),
+        screensN: c.screens.map((x, i) => ({ ...x, id: c.slug + '-screen' + (i + 1), label: x.n.replace(/:$/, '') + ' \u2014 ' + x.t.replace(/:$/, ''), dA: story ? split(x.d)[0] : x.d, dB: split(x.d)[1], src: M.screens ? M.screens[i][0] : undefined, ratio: M.screens ? M.screens[i][1] : '16 / 10', dir: i % 2 ? 'row-reverse' : 'row', vdir: i % 2 ? 'column-reverse' : 'column', ...(() => { const P = (M.pairs || [])[i]; return { isPair: !!P, notPair: !P, cap: P ? P.cap : '', before: P ? P.before.map((b, j) => ({ src: b[0], ratio: b[1], id: c.slug + '-screen' + (i + 1) + '-before' + (j + 1) })) : [], afterSrc: P ? P.after[0] : undefined, afterRatio: P ? P.after[1] : '16 / 10' }; })() })),
         nextTitle: PROJECTS[nx].title, nextCounter: pad(nx + 1) + ' / ' + pad(PROJECTS.length),
         openNext: nav(() => this.go(PROJECTS[nx].slug))
       };
     }
+    if (p) p.probN = !p.story ? p.screensN : p.screensN.some(s => s.dA) ? p.screensN : [];
+    if (p) p.afterN = p.story ? p.screensN.filter(s => s.afterSrc || s.src).map(s => ({ ...s, src: s.afterSrc || s.src, ratio: s.isPair ? s.afterRatio : s.ratio })) : [];
     const activeNav = idx >= 0 ? 'Projects' : Object.keys(NAV).find(k => NAV[k] === s.page);
     return {
       navLinks: Object.keys(NAV), activeNav, tv,
       headerNav: Object.keys(NAV).map(label => ({ label, go: nav(() => this.go(NAV[label])), color: label === activeNav ? 'var(--accent)' : 'var(--text-primary)', dot: label === activeNav ? 'inline-block' : 'none' })),
       goHome: nav(() => this.go('home')),
+      mobile: !!s.mobile, desktop: !s.mobile, menuOpen: !!(s.mobile && s.menuOpen),
+      toggleMenu: () => { const o = !s.menuOpen; document.body.style.overflow = o ? 'hidden' : ''; this.setState({ menuOpen: o }); },
+      menuText: s.menuOpen ? 'Close' : 'Menu', menuLabel: s.menuOpen ? 'Close menu' : 'Open menu',
+      barTop: s.menuOpen ? '4px' : '0px', barBot: s.menuOpen ? '4px' : '8px',
+      barRotA: s.menuOpen ? 'rotate(45deg)' : 'none', barRotB: s.menuOpen ? 'rotate(-45deg)' : 'none',
+      headerBg: s.mobile ? 'var(--bg-page)' : 'color-mix(in srgb, var(--bg-page) 85%, transparent)',
+      headerBlur: s.mobile ? 'none' : 'blur(12px)',
+      stickyPos: s.mobile ? 'static' : 'sticky',
+      showShapesWide: (this.props.shapes ?? true) && !s.mobile,
       isLight: !dark, isDark: dark,
       setLight: () => this.setTheme('light'), setDark: () => this.setTheme('dark'),
       lightColor: dark ? 'var(--text-muted)' : 'var(--text-primary)', darkColor: dark ? 'var(--text-primary)' : 'var(--text-muted)',
